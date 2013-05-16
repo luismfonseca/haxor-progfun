@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{99114D74-3112-9D39-40A0-B28DB033B930}</ProjectGuid>
+	<ProjectGuid>{48E0F3F7-CE7F-17C5-2C78-BEF51A557F93}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -59,7 +59,9 @@
      <Compile Include="Assets\Orthello\Examples\7 - Tweening\JSStar7_1.js" />
      <Compile Include="Assets\Orthello\Examples\7 - Tweening\JSStar7_2.js" />
      <None Include="Assets\Orthello\Examples\0 - Simple Examples\TextSprites\lorem.txt" />
+     <None Include="Assets\Fonts\Ubuntu\LICENCE.txt" />
      <None Include="Assets\Orthello\Examples\0 - Simple Examples\TextSprites\Atlases\russian.txt" />
+     <None Include="Assets\EWS.GUI\GUISkin Editor\README.txt" />
      <None Include="Assets\Orthello\Examples\4 - Follow Target View\-orthello-config.xml" />
      <None Include="Assets\Orthello\-Read-Me.txt" />
      <None Include="Assets\Orthello\Examples\0 - Simple Examples\TextSprites\orthello-font-30.txt" />
@@ -70,8 +72,12 @@
      <None Include="Assets\Orthello\Examples\0 - Simple Examples\Multi Resolution Art\atlas.xml" />
      <None Include="Assets\Orthello\Standard Assets\OT\_Base\TintedAlpha.shader" />
      <None Include="Assets\Orthello\Examples\0 - Simple Examples\RotateTowards\-read-me.txt" />
+     <None Include="Assets\EWS.GUI\README.txt" />
      <None Include="Assets\Orthello\Examples\0 - Simple Examples\Persistance\-read-me.txt" />
      <None Include="Assets\Orthello\Examples\0 - Simple Examples\TextSprites\lorem-rus-utf8.txt" />
+ <Reference Include="GUIE_Core">
+ <HintPath>Assets\EWS.GUI\Core\GUIE_Core.dll</HintPath>
+ </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
