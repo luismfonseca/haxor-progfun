@@ -5,16 +5,21 @@ public class GuiButton : MonoBehaviour {
 	
 	public GUIStyle style;
 	private OTSprite OTComponent;
-
+	public string name;
+	
 	// Use this for initialization
 	void Start() {
-		OT.debug = true;
+		this.name = this.gameObject.name;
 		OTComponent = this.GetComponent<OTSprite>();
 		OTComponent.onDragStart += (owner) => {
-			var newObject = OT.CreateObject(this.gameObject.name);
+			this.gameObject.name = "Command-" + ControlPanel.GetCommandsCount();
+			var newObject = OT.CreateObject(this.name);
+			newObject.gameObject.name = this.name;
+			OTComponent.onDragStart = null; // Remove this action
 		};
 
 		OTComponent.onDragEnd += (owner) => {
+			ControlPanel.AddCommand(this);
  		};
 	}
 	
@@ -31,7 +36,7 @@ public class GuiButton : MonoBehaviour {
 						Screen.height - screenPos.y,
 						this.gameObject.transform.localScale.x, 
 						this.gameObject.transform.localScale.y),
-				this.gameObject.name,
+				this.name,
 				style
 		);
 		
