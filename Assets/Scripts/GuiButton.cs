@@ -17,10 +17,6 @@ public class GuiButton : MonoBehaviour {
 			newObject.gameObject.name = this.name;
 			OTComponent.onDragStart = null; // Remove this action
 		};
-
-		OTComponent.onDragEnd += (owner) => {
-			ControlPanel.AddCommand(this);
- 		};
 	}
 	
 	// Update is called once per frame 

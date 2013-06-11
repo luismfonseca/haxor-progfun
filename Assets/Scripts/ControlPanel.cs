@@ -14,7 +14,8 @@ public class ControlPanel : MonoBehaviour {
 		OTComponent = this.GetComponent<OTSprite>();
 		OTComponent.registerInput = true;
 		OTComponent.onReceiveDrop += (owner) => {
-			Debug.Log("Panel: I received a drop from : " + owner.gameObject.name);
+            Debug.Log("Panel: I received a drop from : " + owner.gameObject.name);
+            ControlPanel.AddCommand(OTComponent.dropTarget.gameObject.GetComponent<GuiButton>());
 		};
 		Commands = new List<CommandsLevel1>();
 		displayOffset = 0;
