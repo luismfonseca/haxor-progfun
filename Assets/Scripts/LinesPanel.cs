@@ -2,7 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class LinesPanel : MonoBehaviour {
+public class LinesPanel : MonoBehaviour
+{
+
+    internal static readonly float OFFSET_X = 44.2f;
 	
 	public List<CommandsLevel1> Commands;
 	public GameObject prefab;
@@ -27,7 +30,7 @@ public class LinesPanel : MonoBehaviour {
 		while (ControlPanel.Commands.Count - commandOffset > 0) {
 			switch(ControlPanel.Commands[commandOffset++]) {
 			case CommandsLevel1.Go:
-				var lineSegment = Instantiate(prefab, new Vector3(-16.85f + drawOffset, 1, -2), Quaternion.identity) as GameObject;
+                var lineSegment = Instantiate(prefab, new Vector3(OFFSET_X + drawOffset, 1, -2), Quaternion.identity) as GameObject;
 				lineSegment.renderer.material.color = currentColor;
 				drawOffset++;
 				break;
@@ -50,7 +53,7 @@ public class LinesPanel : MonoBehaviour {
 		while(this.Commands.Count - generatedCommandOffset > 0 && generatedDrawOffset < 13) {
 			switch(Commands[generatedCommandOffset++]) {
 			case CommandsLevel1.Go:
-				var lineSegment = Instantiate(prefab, new Vector3(-16.85f + generatedDrawOffset, -1, -2), Quaternion.identity) as GameObject;
+                var lineSegment = Instantiate(prefab, new Vector3(OFFSET_X + generatedDrawOffset, -1, -2), Quaternion.identity) as GameObject;
 				lineSegment.renderer.material.color = generatedCurrentColor;
 				generatedDrawOffset++;
 				break;

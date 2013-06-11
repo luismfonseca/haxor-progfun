@@ -13,10 +13,17 @@ public class GuiButton : MonoBehaviour {
 		OTComponent = this.GetComponent<OTSprite>();
 		OTComponent.onDragStart += (owner) => {
 			this.gameObject.name = "Command-" + ControlPanel.GetCommandsCount();
-			var newObject = OT.CreateObject(this.name);
+			var newObject = OT.CreateSprite(this.name);
 			newObject.gameObject.name = this.name;
 			OTComponent.onDragStart = null; // Remove this action
 		};
+
+        OTComponent.onDragEnd += (owner) => {
+            if (OTComponent.dropTarget == null)
+            {
+                OT.DestroyObject(OTComponent);
+            }
+        };
 	}
 	
 	// Update is called once per frame 

@@ -33,6 +33,12 @@ public class ControlPanel : MonoBehaviour {
 		// Position the object correctly
 		obj.gameObject.transform.position = new Vector3(0.5f, 4.7f - 2f * lastIndex, -2);
 	}
+
+    public static void RemoveCommand(GuiButton obj)
+    {
+        int lastIndex = Commands.Count;
+        Commands.Remove((CommandsLevel1)Enum.Parse(typeof(CommandsLevel1), obj.name));
+    }
 	
 	public static int GetCommandsCount() {
 		return Commands.Count;
