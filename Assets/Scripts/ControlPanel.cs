@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using Haxor;
 
 public class ControlPanel : MonoBehaviour {
 	
@@ -10,7 +11,16 @@ public class ControlPanel : MonoBehaviour {
     private Vector2 scrollPosition;
     private int lastCount;
     private Texture2D progressBarTexture;
-    private float progress = 0.0f;
+
+    private GameController gameController;
+    private LinesPanel linesPanel;
+
+    void Awake()
+    {
+        linesPanel = GameObject.FindObjectOfType(typeof(LinesPanel)) as LinesPanel;
+        gameController = GameController.Find();
+    }
+
 	void Start() {
 		OT.debug = true;
 		OTComponent = this.GetComponent<OTSprite>();
@@ -79,9 +89,9 @@ public class ControlPanel : MonoBehaviour {
 
     }
 
-    /*!
-     * draw the progressbar of the level
-     */
+    /// <summary>
+    /// draw the progressbar of the level
+    /// </summary>
     private void drawProgressBar()
     {
         int width = Screen.width, height = Screen.height;
@@ -90,9 +100,8 @@ public class ControlPanel : MonoBehaviour {
         string currentLevelString = "Level" + currentLevel;
         string nextLevelString = "Level" + ( currentLevel + 1 );
 
-        //we need to change this to the real one
-        progress += 0.001f;
-        progress %= 1;
+        // omar needs to change this to the real one
+        float progress = Game.EvaluateProgress(gameController.Game.CurrentLevel.Lines, linesPanel.PlayerRunResultLines);
 
         float labelHorizontalMargin = 0f;
         float labelWidth = width * 0.1f;
@@ -102,10 +111,6 @@ public class ControlPanel : MonoBehaviour {
         float progressBarHorizontalMargin = labelHorizontalMargin + labelWidth;
 
         float GameViewportWidth = width * 0.451f;
-
-
-
-
 
         GUI.Label(new Rect(
             labelHorizontalMargin,

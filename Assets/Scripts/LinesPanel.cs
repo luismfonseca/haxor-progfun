@@ -9,7 +9,6 @@ public class LinesPanel : MonoBehaviour, IHandleCommand
 {
     internal static readonly float OFFSET_X = 44.2f;
 
-    public List<Line> LinesDrawn;
     public List<Line> PlayerRunResultLines;
     public LineColor PlayerRunCurrentLineColor;
 

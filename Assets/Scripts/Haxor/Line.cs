@@ -12,6 +12,29 @@ namespace Haxor
         public LineColor LineColor;
 
         public LineOrientation Orientation = LineOrientation.Angle0;
+
+        public static bool operator ==(Line a, Line b)
+        {
+            // If both are null, or both are same instance, return true.
+            if (System.Object.ReferenceEquals(a, b))
+            {
+                return true;
+            }
+
+            // If one is null, but not both, return false.
+            if (((object)a == null) || ((object)b == null))
+            {
+                return false;
+            }
+
+            // Return true if the fields match:
+            return a.LineColor == b.LineColor && a.Orientation == b.Orientation;
+        }
+
+        public static bool operator !=(Line a, Line b)
+        {
+            return !(a == b);
+        }
     }
 
     [Serializable]
