@@ -19,8 +19,9 @@ public class ControlPanel : MonoBehaviour {
 		displayOffset = 0;
 	}
 	
-	void Update() {
-	
+	void Update()
+    {
+	    
 	}
 	
 	public static void AddCommand(GuiButton obj)

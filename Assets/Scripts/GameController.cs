@@ -8,11 +8,13 @@ public class GameController : MonoBehaviour
 
     public CommandComponent[] CommandComponents;
 
+    private LinesPanel linesPanel;
+
     void Awake()
     {
         Game = Game.NewGame();
         //Game = Game.Load();
-
+        linesPanel = GameObject.FindObjectOfType(typeof(LinesPanel)) as LinesPanel;
     }
 
     void Start()
@@ -36,6 +38,18 @@ public class GameController : MonoBehaviour
         if (GUILayout.Button("Load Game"))
         {
             Game = Game.Load();
+        }
+        if (GUILayout.Button("Play"))
+        {
+            //Game.CurrentLevel.PlayerSolution.Add(CommandLevel1.Commands[0]);
+            //Game.CurrentLevel.PlayerSolution.Add(CommandLevel1.Commands[0]);
+            //Game.CurrentLevel.PlayerSolution.Add(CommandLevel1.Commands[1]);
+            //Game.CurrentLevel.PlayerSolution.Add(CommandLevel1.Commands[1]);
+            //Game.CurrentLevel.PlayerSolution.Add(CommandLevel1.Commands[3]);
+            //Game.CurrentLevel.PlayerSolution.Add(CommandLevel1.Commands[0]);
+            //Game.CurrentLevel.PlayerSolution.Add(CommandLevel1.Commands[0]);
+            //Game.CurrentLevel.PlayerSolution.Add(CommandLevel1.Commands[1]);
+            linesPanel.Play(Game.CurrentLevel.PlayerSolution);
         }
     }
 

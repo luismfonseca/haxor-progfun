@@ -2,6 +2,8 @@
 using System.Collections;
 using System;
 using System.Xml.Serialization;
+using Assets.Scripts.Haxor;
+using System.Runtime.Serialization;
 
 namespace Haxor
 {
@@ -10,45 +12,50 @@ namespace Haxor
     {
         public string Name;
 
-        public abstract Action GetAction();
+        public abstract Action<IHandleCommand> GetAction();
+
     }
 
+    [Serializable]
     public class CommandLevel1 : Command
     {
         public static Command[] Commands = new Command[]
         {
             new CommandLevel1() { Name = "Go" },
-            new CommandLevel1() { Name = "Skip" }
+            new CommandLevel1() { Name = "Skip" },
+            new CommandLevel1() { Name = "Black" },
+            new CommandLevel1() { Name = "Blue" },
+            new CommandLevel1() { Name = "Green" }
         };
 
-        public override Action GetAction()
+        public override Action<IHandleCommand> GetAction()
         {
             switch (Name)
             {
                 case "Skip":
-                    return () =>
+                    return (handler) =>
                     {
-                        GameController.Find().Game.CurrentLevel.Lines.Add(new Line() { Color = LineColor.Transparent });
+                        handler.SkipLine();
                     };
                 case "Go":
-                    return () =>
+                    return (handler) =>
                     {
-                        GameController.Find().Game.CurrentLevel.Lines.Add(new Line());
+                        handler.AddLine(new Line());
                     };
                 case "Black":
-                    return () =>
+                    return (handler) =>
                     {
-                        LineColor.CurrentColor = LineColor.Black;
+                        handler.ChangeCurrentColor(LineColor.Black);
                     };
                 case "Blue":
-                    return () =>
+                    return (handler) =>
                     {
-                        LineColor.CurrentColor = LineColor.Blue;
+                        handler.ChangeCurrentColor(LineColor.Blue);
                     };
                 case "Green":
-                    return () =>
+                    return (handler) =>
                     {
-                        LineColor.CurrentColor = LineColor.Green;
+                        handler.ChangeCurrentColor(LineColor.Green);
                     };
             }
             throw new Exception("Command Action undefined.");

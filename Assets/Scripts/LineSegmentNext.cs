@@ -12,6 +12,9 @@ public class LineSegmentNext : MonoBehaviour {
 
     public void AnimateNextLineSegment()
     {
-        next.animation.Play();
+        if (next != null)
+        {
+            next.animation.Play();
+        }
     }
 }
