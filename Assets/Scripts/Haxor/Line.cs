@@ -9,9 +9,32 @@ namespace Haxor
     [Serializable]
     public class Line
     {
-        public LineColor Color = LineColor.CurrentColor;
+        public LineColor LineColor;
 
         public LineOrientation Orientation = LineOrientation.Angle0;
+
+        public static bool operator ==(Line a, Line b)
+        {
+            // If both are null, or both are same instance, return true.
+            if (System.Object.ReferenceEquals(a, b))
+            {
+                return true;
+            }
+
+            // If one is null, but not both, return false.
+            if (((object)a == null) || ((object)b == null))
+            {
+                return false;
+            }
+
+            // Return true if the fields match:
+            return a.LineColor == b.LineColor && a.Orientation == b.Orientation;
+        }
+
+        public static bool operator !=(Line a, Line b)
+        {
+            return !(a == b);
+        }
     }
 
     [Serializable]
@@ -22,7 +45,6 @@ namespace Haxor
         public static readonly LineColor Blue = new LineColor(Color.blue);
         public static readonly LineColor Green = new LineColor(Color.green);
         public static readonly LineColor Transparent = new LineColor(new Color(0f, 0f, 0f, 0f));
-        public static LineColor CurrentColor = Black;
         
         public Color Color;
 

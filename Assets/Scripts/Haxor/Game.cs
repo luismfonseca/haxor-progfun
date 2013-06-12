@@ -20,6 +20,20 @@ namespace Haxor
 
         public int PlayerScore;
 
+        public static float EvaluateProgress(List<Line> original, List<Line> toBeValidated)
+        {
+            float correctCount = 0;
+            for (int i = 0; i < original.Count && i < toBeValidated.Count; i++)
+            {
+                if (original[i] != toBeValidated[i])
+                {
+                    break;
+                }
+                correctCount++;
+            }
+            return correctCount / ((float) original.Count);
+        }
+
         public static Game NewGame()
         {
             Game newGame = new Game();
