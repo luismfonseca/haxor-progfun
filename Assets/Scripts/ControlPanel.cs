@@ -25,7 +25,6 @@ public class ControlPanel : MonoBehaviour {
         progressBarTexture.SetPixel(0, 0, new Color(0, 255, 0));
         progressBarTexture.wrapMode = TextureWrapMode.Repeat;
         progressBarTexture.Apply();
-        GUI.skin.box.normal.background = progressBarTexture;
 
 	}
 	
@@ -52,6 +51,8 @@ public class ControlPanel : MonoBehaviour {
         GUI.skin.label.fontStyle = FontStyle.Bold;
         GUI.skin.label.normal.textColor = new Color(0,0,0);
         GUI.skin.label.alignment = TextAnchor.MiddleCenter;
+        GUI.skin.box.normal.background = progressBarTexture;
+
         
 
         GUIStyle style = new GUIStyle();
@@ -73,14 +74,20 @@ public class ControlPanel : MonoBehaviour {
         GUILayout.EndScrollView();
         GUILayout.EndArea();
 
+        drawProgressBar();
 
+    }
 
-        //====== PROGRESSBAR CODE CREATION =============
+    /*!
+     * draw the progressbar of the level
+     */
+    private void drawProgressBar()
+    {
+        int width = Screen.width, height = Screen.height;
 
         int currentLevel = 1;
         string currentLevelString = "Level" + currentLevel;
-        string nextLevelString = "Level" + currentLevel + 1;
-
+        string nextLevelString = "Level" + ( currentLevel + 1 );
 
         //we need to change this to the real one
         progress += 0.001f;
@@ -94,6 +101,10 @@ public class ControlPanel : MonoBehaviour {
         float progressBarHorizontalMargin = labelHorizontalMargin + labelWidth;
 
         float GameViewportWidth = width * 0.451f;
+
+
+
+
 
         GUI.Label(new Rect(
             labelHorizontalMargin,
@@ -113,6 +124,5 @@ public class ControlPanel : MonoBehaviour {
             labelWidth,
             progressBarHeight
           ), nextLevelString);
-
     }
 }
