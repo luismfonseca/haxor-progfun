@@ -8,15 +8,23 @@ public class GameController : MonoBehaviour
 
     public CommandComponent[] CommandComponents;
 
-	void Start()
+    void Awake()
     {
-        //Game = Game.Load();
         Game = new Game();
-	}
+        //Game = Game.Load();
+
+    }
+
+    void Start()
+    {
+        for (int i = 0; i < Game.CurrentLevel.GetCommands().Length; i++)
+        {
+            //TODO: Add panel buttons
+        }
+    }
 	
 	void Update()
     {
-	    
 	}
 
     public static GameController Find()

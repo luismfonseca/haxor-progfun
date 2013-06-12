@@ -9,8 +9,7 @@ namespace Haxor
     [Serializable]
     public abstract class Level
     {
-        [XmlIgnore]
-        internal static Command[] Commands;
+        public abstract Command[] GetCommands();
 
         [XmlIgnore]
         internal static Pattern[] Patterns;
@@ -37,26 +36,19 @@ namespace Haxor
         {
             MaximumLines = 50;
 
-            Commands = new Command[]
-            {
-                new Command() {
-                        Name = "Go",
-                        CommandComponent = CommandComponent.FindCommandComponentByName("Go")
-                },
-                new Command() {
-                        Name = "Skip",
-                        CommandComponent = CommandComponent.FindCommandComponentByName("Skip")
-                }
-            };
-
             Patterns = new Pattern[7]; // Some are repeated to increase their odds
             Patterns[0].Add(new Line() { Color = LineColor.Black });
-            Patterns[1].Add(new Line() { Color = LineColor.Red });
-            Patterns[2].Add(new Line() { Color = LineColor.Blue });
-            Patterns[3].Add(new Line() { Color = LineColor.Black });
-            Patterns[4].Add(new Line() { Color = LineColor.Red });
+            Patterns[1].Add(new Line() { Color = LineColor.Black });
+            Patterns[2].Add(new Line() { Color = LineColor.Red });
+            Patterns[3].Add(new Line() { Color = LineColor.Red });
+            Patterns[4].Add(new Line() { Color = LineColor.Blue });
             Patterns[5].Add(new Line() { Color = LineColor.Blue });
             Patterns[6].Add(new Line() { Color = LineColor.Transparent });
+        }
+
+        public override Command[] GetCommands()
+        {
+            return CommandLevel1.Commands;
         }
     }
 }
