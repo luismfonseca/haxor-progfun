@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace Haxor
 {
     [Serializable]
-    public class UserSolution : List<Command>
+    public class PlayerSolution : List<Command>
     {
 
     }

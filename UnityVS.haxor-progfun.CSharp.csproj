@@ -167,6 +167,7 @@
     <Compile Include="Assets\Scripts\CommandsLevel1.cs" />
     <Compile Include="Assets\Scripts\ControlPanel.cs" />
     <Compile Include="Assets\Scripts\FixCameraViewPortOnPanel.cs" />
+    <Compile Include="Assets\Scripts\GameAreaController.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\GuiButton.cs" />
     <Compile Include="Assets\Scripts\Haxor\ArrayList.cs" />

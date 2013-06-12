@@ -53,7 +53,7 @@ public class LinesPanel : MonoBehaviour
 			switch(Commands[generatedCommandOffset++]) {
 			case CommandsLevel1.Go:
                 var lineSegment = Instantiate(prefab, new Vector3(OFFSET_X + generatedDrawOffset, -1, -2), Quaternion.identity) as GameObject;
-				lineSegment.renderer.material.color = generatedCurrentColor;
+				lineSegment.transform.GetChild(0).renderer.material.color = generatedCurrentColor;
 				generatedDrawOffset++;
 				break;
 			case CommandsLevel1.Skip:

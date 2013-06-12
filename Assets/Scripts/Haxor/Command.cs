@@ -8,9 +8,6 @@ namespace Haxor
     [Serializable]
     public abstract class Command
     {
-        [XmlIgnore]
-        public CommandComponent CommandComponent;
-
         public string Name;
 
         public abstract Action GetAction();
@@ -20,14 +17,8 @@ namespace Haxor
     {
         public static Command[] Commands = new Command[]
         {
-            new CommandLevel1() {
-                    Name = "Go",
-                    CommandComponent = CommandComponent.FindCommandComponentByName("Go") // FIXME
-            },
-            new CommandLevel1() {
-                    Name = "Skip",
-                    CommandComponent = CommandComponent.FindCommandComponentByName("Skip") // FIXME
-            }
+            new CommandLevel1() { Name = "Go" },
+            new CommandLevel1() { Name = "Skip" }
         };
 
         public override Action GetAction()

@@ -17,7 +17,7 @@ namespace Haxor
         [XmlIgnore]
         internal static Pattern[] Patterns { get; set; }
 
-        public UserSolution UserSolution { get; set; }
+        public PlayerSolution PlayerSolution { get; set; }
 
         public List<Line> Lines { get; set; }
 
@@ -27,14 +27,14 @@ namespace Haxor
         {
             get
             {
-                return UserSolution.Count / MaximumLines;
+                return PlayerSolution.Count / MaximumLines;
             }
         }
 
         public Level()
         {
             Lines = new List<Line>();
-            UserSolution = new UserSolution();
+            PlayerSolution = new PlayerSolution();
         }
 
         public void GenerateGuideline()
