@@ -6,7 +6,6 @@ using System;
 public class ControlPanel : MonoBehaviour {
 	
 	private OTSprite OTComponent;
-	public static List<CommandsLevel1> Commands;
 	private int displayOffset;
 
 	void Start() {
@@ -17,7 +16,6 @@ public class ControlPanel : MonoBehaviour {
             Debug.Log("Panel: I received a drop from : " + owner.gameObject.name);
             ControlPanel.AddCommand(OTComponent.dropTarget.gameObject.GetComponent<GuiButton>());
 		};
-		Commands = new List<CommandsLevel1>();
 		displayOffset = 0;
 	}
 	
@@ -27,20 +25,15 @@ public class ControlPanel : MonoBehaviour {
 	
 	public static void AddCommand(GuiButton obj)
 	{
-		int lastIndex = Commands.Count;
-		Commands.Add((CommandsLevel1) Enum.Parse(typeof(CommandsLevel1), obj.name));
-		
 		// Position the object correctly
-		obj.gameObject.transform.position = new Vector3(0.5f, 4.7f - 2f * lastIndex, -2);
+		//obj.gameObject.transform.position = new Vector3(0.5f, 4.7f - 2f * lastIndex, -2);
 	}
 
     public static void RemoveCommand(GuiButton obj)
     {
-        int lastIndex = Commands.Count;
-        Commands.Remove((CommandsLevel1)Enum.Parse(typeof(CommandsLevel1), obj.name));
     }
 	
 	public static int GetCommandsCount() {
-		return Commands.Count;
+        return GameController.Find().Game.CurrentLevel.PlayerSolution.Count;
 	}
 }

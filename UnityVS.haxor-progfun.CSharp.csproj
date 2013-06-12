@@ -164,7 +164,6 @@
     <Compile Include="Assets\Orthello\Standard Assets\OT\Tweening\OTTween.cs" />
     <Compile Include="Assets\Orthello\Standard Assets\OT\Tweening\OTTweenController.cs" />
     <Compile Include="Assets\Scripts\CommandComponent.cs" />
-    <Compile Include="Assets\Scripts\CommandsLevel1.cs" />
     <Compile Include="Assets\Scripts\ControlPanel.cs" />
     <Compile Include="Assets\Scripts\FixCameraViewPortOnPanel.cs" />
     <Compile Include="Assets\Scripts\GameAreaController.cs" />
@@ -180,6 +179,7 @@
     <Compile Include="Assets\Scripts\Haxor\UserSolution.cs" />
     <Compile Include="Assets\Scripts\Haxor\Util\BinarySerialization.cs" />
     <Compile Include="Assets\Scripts\Haxor\Util\XmlSerialization.cs" />
+    <Compile Include="Assets\Scripts\LineSegmentNext.cs" />
     <Compile Include="Assets\Scripts\LinesPanel.cs" />
     <Compile Include="Assets\Scripts\VectorLine.cs" />
     <None Include="Assets\EWS.GUI\GUISkin Editor\README.txt" />
