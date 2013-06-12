@@ -10,7 +10,7 @@ public class GameController : MonoBehaviour
 
     void Awake()
     {
-        Game = new Game();
+        Game = Game.NewGame();
         //Game = Game.Load();
 
     }
@@ -26,6 +26,18 @@ public class GameController : MonoBehaviour
 	void Update()
     {
 	}
+
+    void OnGUI()
+    {
+        if (GUILayout.Button("Save Game"))
+        {
+            Game.Save(Game);
+        }
+        if (GUILayout.Button("Load Game"))
+        {
+            Game = Game.Load();
+        }
+    }
 
     public static GameController Find()
     {

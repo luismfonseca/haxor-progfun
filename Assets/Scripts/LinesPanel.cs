@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public class LinesPanel : MonoBehaviour
 {
-
     internal static readonly float OFFSET_X = 44.2f;
 	
 	public List<CommandsLevel1> Commands;

@@ -7,18 +7,21 @@ using System.Collections.Generic;
 namespace Haxor
 {
     [Serializable]
-    public abstract class Level
+    public class Level
     {
-        public abstract Command[] GetCommands();
+        public virtual Command[] GetCommands()
+        {
+            return null;
+        }
 
         [XmlIgnore]
-        internal static Pattern[] Patterns;
+        internal static Pattern[] Patterns { get; set; }
 
-        public UserSolution UserSolution;
+        public UserSolution UserSolution { get; set; }
 
-        public List<Line> Lines;
+        public List<Line> Lines { get; set; }
 
-        public int MaximumLines;
+        public int MaximumLines { get; set; }
 
         public float Progress
         {
@@ -26,6 +29,27 @@ namespace Haxor
             {
                 return UserSolution.Count / MaximumLines;
             }
+        }
+
+        public Level()
+        {
+            Lines = new List<Line>();
+            UserSolution = new UserSolution();
+        }
+
+        public void GenerateGuideline()
+        {
+            while (Lines.Count < MaximumLines)
+            {
+                var pattern = Patterns[UnityEngine.Random.Range(0, Patterns.Length)];
+
+                foreach (var line in pattern)
+                {
+                    Lines.Add(line);
+                }
+            }
+
+            MaximumLines = Lines.Count; // A longer pattern might have to Line.Count > MaximumLines
         }
     }
 
@@ -36,7 +60,8 @@ namespace Haxor
         {
             MaximumLines = 50;
 
-            Patterns = new Pattern[7]; // Some are repeated to increase their odds
+            Patterns = new Pattern[7] { new Pattern(), new Pattern(), new Pattern(), new Pattern(), new Pattern(), new Pattern(), new Pattern() };
+            // Some are repeated to increase their odds
             Patterns[0].Add(new Line() { Color = LineColor.Black });
             Patterns[1].Add(new Line() { Color = LineColor.Black });
             Patterns[2].Add(new Line() { Color = LineColor.Red });
@@ -44,6 +69,8 @@ namespace Haxor
             Patterns[4].Add(new Line() { Color = LineColor.Blue });
             Patterns[5].Add(new Line() { Color = LineColor.Blue });
             Patterns[6].Add(new Line() { Color = LineColor.Transparent });
+
+            GenerateGuideline();
         }
 
         public override Command[] GetCommands()

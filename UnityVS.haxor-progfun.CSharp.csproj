@@ -177,6 +177,7 @@
     <Compile Include="Assets\Scripts\Haxor\Pattern.cs" />
     <Compile Include="Assets\Scripts\Haxor\Tag.cs" />
     <Compile Include="Assets\Scripts\Haxor\UserSolution.cs" />
+    <Compile Include="Assets\Scripts\Haxor\Util\BinarySerialization.cs" />
     <Compile Include="Assets\Scripts\Haxor\Util\XmlSerialization.cs" />
     <Compile Include="Assets\Scripts\LinesPanel.cs" />
     <Compile Include="Assets\Scripts\VectorLine.cs" />
