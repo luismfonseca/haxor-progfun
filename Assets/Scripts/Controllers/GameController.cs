@@ -1,28 +1,33 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Haxor;
+using Assets.Scripts.Controllers;
 
 public class GameController : MonoBehaviour
 {
     public Game Game;
 
-    public CommandComponent[] CommandComponents;
+    public GameObject CommandComponent;
 
     private LinesPanel linesPanel;
+
+    private ButtonsController buttonsController;
 
     void Awake()
     {
         Game = Game.NewGame();
         //Game = Game.Load();
         linesPanel = GameObject.FindObjectOfType(typeof(LinesPanel)) as LinesPanel;
+        buttonsController = new ButtonsController(this);
     }
 
     void Start()
     {
-        for (int i = 0; i < Game.CurrentLevel.GetCommands().Length; i++)
-        {
+        buttonsController.InstantiateCommandButtons();
+        //for (int i = 0; i < Game.CurrentLevel.GetCommands().Length; i++)
+        //{
             //TODO: Add panel buttons
-        }
+        //}
     }
 	
 	void Update()

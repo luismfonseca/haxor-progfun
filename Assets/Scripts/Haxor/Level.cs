@@ -54,9 +54,9 @@ namespace Haxor
     }
 
     [Serializable]
-    public class Level0 : Level
+    public class Level1 : Level
     {
-        public Level0()
+        public Level1()
         {
             MaximumLines = 50;
 

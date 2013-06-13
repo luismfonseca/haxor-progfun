@@ -28,6 +28,7 @@ namespace Haxor
             new CommandLevel1() { Name = "Green" }
         };
 
+
         public override Action<IHandleCommand> GetAction()
         {
             switch (Name)

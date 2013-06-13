@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Haxor;
 
 public class GuiButton : MonoBehaviour {
 	
 	public GUIStyle style;
 	private OTSprite OTComponent;
 	public string name;
+    public Command command;
 	
 	// Use this for initialization
 	void Start() {
@@ -15,7 +17,10 @@ public class GuiButton : MonoBehaviour {
 			this.gameObject.name = "Command-" + ControlPanel.GetCommandsCount();
 			var newObject = OT.CreateSprite(this.name);
 			newObject.gameObject.name = this.name;
-			OTComponent.onDragStart = null; // Remove this action
+            OTComponent.onDragStart = (component) =>
+            {
+                ControlPanel.RemoveCommand(this);
+            }; // Remove this action
 		};
 
         OTComponent.onDragEnd += (owner) => {
