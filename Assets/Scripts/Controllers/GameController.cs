@@ -24,11 +24,14 @@ public class GameController : MonoBehaviour
     void Start()
     {
         buttonsController.InstantiateCommandButtons();
+        OnLevelWasLoaded(0);
     }
 	
-	void Update()
+    void OnLevelWasLoaded(int level)
     {
-	}
+        var playerGameObject = GameObject.FindGameObjectWithTag(Tag.Player);
+        playerGameObject.SetActive(Game.CurrentLevel.DisplayCharacter);
+    }
 
     void OnGUI()
     {

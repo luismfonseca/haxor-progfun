@@ -40,8 +40,9 @@ namespace Haxor
 
             newGame.Levels = new List<Level>();
             newGame.Levels.Add(new Level1());
+            newGame.Levels.Add(new Level10());
 
-            newGame.CurrentLevel = newGame.Levels[0];
+            newGame.CurrentLevel = newGame.Levels[1];
             return newGame;
         }
 

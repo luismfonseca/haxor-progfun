@@ -145,7 +145,9 @@
     <Compile Include="Assets\Scripts\Haxor\Commands\CommandLevel2.cs" />
     <Compile Include="Assets\Scripts\Haxor\Game.cs" />
     <Compile Include="Assets\Scripts\Haxor\IHandleCommand.cs" />
-    <Compile Include="Assets\Scripts\Haxor\Level.cs" />
+    <Compile Include="Assets\Scripts\Haxor\Levels\Level.cs" />
+    <Compile Include="Assets\Scripts\Haxor\Levels\Level1.cs" />
+    <Compile Include="Assets\Scripts\Haxor\Levels\Level10.cs" />
     <Compile Include="Assets\Scripts\Haxor\Line.cs" />
     <Compile Include="Assets\Scripts\Haxor\Pattern.cs" />
     <Compile Include="Assets\Scripts\Haxor\Prototype.cs" />

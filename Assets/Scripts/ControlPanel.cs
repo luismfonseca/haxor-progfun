@@ -58,7 +58,6 @@ public class ControlPanel : MonoBehaviour {
         if (screenSize.x != Screen.width || screenSize.y != Screen.height)
         {
             UpdateViewportRect();
-            
         }
 	}
 
@@ -96,8 +95,10 @@ public class ControlPanel : MonoBehaviour {
     {
         float relativeHeight = (Screen.height / ViewportRect.height);
         int index = 0;
-        foreach(var button in buttonList){
-            button.gameObject.transform.position = new Vector3(0.5f, 4.7f + (scrollPosition.y / relativeHeight) - (GuiButton.HEIGHT) * index - 1, -2);
+        foreach(var button in buttonList)
+        {
+            button.gameObject.transform.position =
+                    new Vector3(0.5f, 4.7f + (scrollPosition.y / relativeHeight) - (button.Height) * index - 1, -2);
             button.index = index;
             ++index;
         }
@@ -133,8 +134,10 @@ public class ControlPanel : MonoBehaviour {
         {
             updatePositions();
         }
-        int count = GetCommandsCount();
-        GUILayout.Space(GuiButton.HEIGHT * (Screen.height/ViewportRect.height) * (count + 1));
+
+        float totalHeight = controlPanel.buttonList.Aggregate(0f, (heightSum, button) => { return heightSum + button.Height; }) + 2f;
+
+        GUILayout.Space(totalHeight * (Screen.height / ViewportRect.height));
         GUILayout.EndScrollView();
         GUILayout.EndArea();
 

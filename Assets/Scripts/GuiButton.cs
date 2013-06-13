@@ -4,7 +4,6 @@ using Haxor;
 
 public class GuiButton : MonoBehaviour {
 
-    public static readonly float HEIGHT = 2f;
     public static readonly float WIDTH = 2f;
 
 	public GUIStyle style;
@@ -15,12 +14,19 @@ public class GuiButton : MonoBehaviour {
 
     private bool isPlacedInCommandsPanel;
 
+    public float Height
+    {
+        get
+        {
+            return 2f;
+        }
+    }
+
 	void Start()
     {
-
 		this.name = this.gameObject.name;
 		OTComponent = this.GetComponent<OTSprite>();
-        OTComponent.size = new Vector2(WIDTH, HEIGHT);
+        OTComponent.size = new Vector2(WIDTH, Height);
 		OTComponent.onDragStart += (owner) => {
 			this.gameObject.name = "Command-" + ControlPanel.GetCommandsCount();
 			var newObject = OT.CreateSprite(this.name);
@@ -41,7 +47,8 @@ public class GuiButton : MonoBehaviour {
         };
 	}
 	
-	void OnGUI() {
+	void OnGUI()
+    {
         float ypos = this.gameObject.transform.position.y;
         if (ypos > 6 || ypos < 6)
         {
