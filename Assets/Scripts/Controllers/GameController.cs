@@ -9,7 +9,7 @@ public class GameController : MonoBehaviour
 
     public GameObject CommandComponent;
 
-    private LinesPanel linesPanel;
+    public LinesPanel linesPanel;
 
     private ButtonsController buttonsController;
 

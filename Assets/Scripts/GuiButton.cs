@@ -43,17 +43,19 @@ public class GuiButton : MonoBehaviour {
 	}
 	
 	void OnGUI() {
-		
-        Vector3 screenPos = OT.inputCameras[0].WorldToScreenPoint(this.gameObject.transform.position);
-        GUI.Label(
-				new Rect(
-						screenPos.x,
-						Screen.height - screenPos.y,
-						this.gameObject.transform.localScale.x, 
-						this.gameObject.transform.localScale.y),
-				this.name,
-				style
-		);
-		
+        float ypos = this.gameObject.transform.position.y;
+        if (ypos > 6 || ypos < 6)
+        {
+            Vector3 screenPos = OT.inputCameras[0].WorldToScreenPoint(this.gameObject.transform.position);
+            GUI.Label(
+                    new Rect(
+                            screenPos.x,
+                            Screen.height - screenPos.y,
+                            this.gameObject.transform.localScale.x,
+                            this.gameObject.transform.localScale.y),
+                    this.name,
+                    style
+            );
+        }	
 	}
 }

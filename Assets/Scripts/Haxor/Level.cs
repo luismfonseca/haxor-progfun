@@ -23,6 +23,8 @@ namespace Haxor
 
         public int MaximumLines { get; set; }
 
+        public string nextLevelScene { get; set; }
+
         public float Progress
         {
             get
@@ -58,7 +60,8 @@ namespace Haxor
     {
         public Level1()
         {
-            MaximumLines = 50;
+            nextLevelScene = "SceneStoryLevel2";
+            MaximumLines = 4;
 
             Patterns = new Pattern[7] { new Pattern(), new Pattern(), new Pattern(), new Pattern(), new Pattern(), new Pattern(), new Pattern() };
             // Some are repeated to increase their odds

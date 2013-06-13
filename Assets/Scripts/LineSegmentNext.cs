@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using Haxor;
 
 public class LineSegmentNext : MonoBehaviour {
 
@@ -15,6 +16,17 @@ public class LineSegmentNext : MonoBehaviour {
         if (next != null)
         {
             next.animation.Play();
+        }
+        else
+        {
+            var gameController = GameController.Find();
+            var level = gameController.Game.CurrentLevel;
+            float progress = Game.EvaluateProgress(level.Lines, gameController.linesPanel.PlayerRunResultLines);
+            if (progress >= 1)
+            {
+                Debug.Log("YOU!!!!!!!!!!! WIN !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                Application.LoadLevel(level.nextLevelScene);
+            }
         }
     }
 }
