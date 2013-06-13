@@ -24,10 +24,6 @@ public class GameController : MonoBehaviour
     void Start()
     {
         buttonsController.InstantiateCommandButtons();
-        //for (int i = 0; i < Game.CurrentLevel.GetCommands().Length; i++)
-        //{
-            //TODO: Add panel buttons
-        //}
     }
 	
 	void Update()

@@ -3,6 +3,7 @@ using System.Collections;
 using System;
 using System.Xml.Serialization;
 using System.Collections.Generic;
+using Assets.Scripts.Haxor.Commands;
 
 namespace Haxor
 {

@@ -25,7 +25,7 @@ namespace Assets.Scripts.Controllers
             int index = 0;
             foreach (var command in commands)
             {
-                var button = OT.CreateSprite("CommandButton");
+                var button = OT.CreateSprite(Prototype.CommandButton);
                 button.gameObject.name = command.Name;
                 button.position = new Vector2(OFFSET_X + WIDTH * index, OFFSET_Y);
                 button.GetComponent<GuiButton>().command = command;

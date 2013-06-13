@@ -1,21 +1,11 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using Haxor;
 using System;
-using System.Xml.Serialization;
-using Assets.Scripts.Haxor;
-using System.Runtime.Serialization;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
-namespace Haxor
+namespace Assets.Scripts.Haxor.Commands
 {
-    [Serializable]
-    public abstract class Command
-    {
-        public string Name;
-
-        public abstract Action<IHandleCommand> GetAction();
-
-    }
-
     [Serializable]
     public class CommandLevel1 : Command
     {
@@ -23,11 +13,11 @@ namespace Haxor
         {
             new CommandLevel1() { Name = "Go" },
             new CommandLevel1() { Name = "Skip" },
+            new ChangeColor(),
             new CommandLevel1() { Name = "Black" },
             new CommandLevel1() { Name = "Blue" },
             new CommandLevel1() { Name = "Red" }
         };
-
 
         public override Action<IHandleCommand> GetAction()
         {
@@ -48,11 +38,6 @@ namespace Haxor
                     {
                         handler.ChangeCurrentColor(LineColor.Black);
                     };
-                case "Blue":
-                    return (handler) =>
-                    {
-                        handler.ChangeCurrentColor(LineColor.Blue);
-                    };
                 case "Green":
                     return (handler) =>
                     {
@@ -66,6 +51,11 @@ namespace Haxor
                 default:
                     throw new Exception("Command Action undefined.");
             }
+        }
+
+        public override object Clone()
+        {
+            return new CommandLevel1() { Name = Name };
         }
     }
 }

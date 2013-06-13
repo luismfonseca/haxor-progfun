@@ -12,9 +12,12 @@ public class GuiButton : MonoBehaviour {
 	public string name;
     public Command command;
     public int index;
-	
-	// Use this for initialization
-	void Start() {
+
+    private bool isPlacedInCommandsPanel;
+
+	void Start()
+    {
+
 		this.name = this.gameObject.name;
 		OTComponent = this.GetComponent<OTSprite>();
         OTComponent.size = new Vector2(WIDTH, HEIGHT);
@@ -22,7 +25,7 @@ public class GuiButton : MonoBehaviour {
 			this.gameObject.name = "Command-" + ControlPanel.GetCommandsCount();
 			var newObject = OT.CreateSprite(this.name);
 			newObject.gameObject.name = this.name;
-            newObject.GetComponent<GuiButton>().command = this.command;
+            newObject.GetComponent<GuiButton>().command = this.command.Clone() as Command;
             OTComponent.onDragStart = (component) =>
             {
                 ControlPanel.RemoveCommand(this);
@@ -38,10 +41,6 @@ public class GuiButton : MonoBehaviour {
         };
 	}
 	
-	// Update is called once per frame 
-	void Update() {
-	}
-	
 	void OnGUI() {
 		
         Vector3 screenPos = OT.inputCameras[0].WorldToScreenPoint(this.gameObject.transform.position);
@@ -54,6 +53,43 @@ public class GuiButton : MonoBehaviour {
 				this.name,
 				style
 		);
-		
 	}
+
+    public void setAsPlacedInCommandPanel(bool placed)
+    {
+        isPlacedInCommandsPanel = placed;
+        if (placed)
+        {
+            switch (command.Name)
+            {
+                case "Change Color":
+                    var tinyButton = OT.CreateSprite(Prototype.SelectionBoxTiny);
+                    tinyButton.transform.parent = this.transform;
+                    tinyButton.position = new Vector2(2f, 0f);
+                    tinyButton.tintColor = Color.black;
+                    tinyButton.GetComponent<GuiSelectionButton>().IsSelected = true;
+                    tinyButton.GetComponent<GuiSelectionButton>().index = 0;
+                    tinyButton = OT.CreateSprite(Prototype.SelectionBoxTiny);
+                    tinyButton.transform.parent = this.transform;
+                    tinyButton.position = new Vector2(3f, 0f);
+                    tinyButton.tintColor = Color.red;
+                    tinyButton.GetComponent<GuiSelectionButton>().index = 1;
+                    tinyButton = OT.CreateSprite(Prototype.SelectionBoxTiny);
+                    tinyButton.transform.parent = this.transform;
+                    tinyButton.position = new Vector2(4f, 0f);
+                    tinyButton.tintColor = Color.blue;
+                    tinyButton.GetComponent<GuiSelectionButton>().index = 2;
+                    break;
+                default:
+                    break;
+            }
+        }
+        else
+        {
+            foreach (Transform child in transform)
+            {
+                GameObject.DestroyObject(child.gameObject);
+            }
+        }
+    }
 }

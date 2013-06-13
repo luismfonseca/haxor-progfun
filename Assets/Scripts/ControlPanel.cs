@@ -57,17 +57,11 @@ public class ControlPanel : MonoBehaviour {
             index = buttonList.Count;
         }
 
-        //int index = Math.Max(0, Math.Min(buttonList.Count, (int)((objYPosition / 1.5f) )));
-        //Debug.Log(objYPosition);
-
+        obj.setAsPlacedInCommandPanel(true);
         obj.index = index;
         buttonList.Insert(index, obj);
         gameController.Game.CurrentLevel.PlayerSolution.Insert(index, obj.command);
-		// Position the object correctly
-        //obj.GetComponent<OTSprite>().position = new Vector2(0.5f, 4.7f - 2f * GetCommandsCount());
-        //obj.gameObject.transform.position = new Vector3(0.5f, 4.7f - 2f * GetCommandsCount() - 1, -2);
         updatePositions();
-       
 	}
 
     /// <summary>
@@ -85,10 +79,10 @@ public class ControlPanel : MonoBehaviour {
 
     public static void RemoveCommand(GuiButton obj)
     {
+        obj.setAsPlacedInCommandPanel(false);
         gameController.Game.CurrentLevel.PlayerSolution.RemoveAt(obj.index);
         controlPanel.buttonList.RemoveAt(obj.index);
         controlPanel.updatePositions();
-
     }
 	
 	public static int GetCommandsCount() {
@@ -122,7 +116,6 @@ public class ControlPanel : MonoBehaviour {
         GUILayout.EndArea();
 
         drawProgressBar();
-
     }
 
     /// <summary>
