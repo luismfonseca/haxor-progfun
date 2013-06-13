@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 using Haxor;
 
 public class ControlPanel : MonoBehaviour {
@@ -9,7 +10,6 @@ public class ControlPanel : MonoBehaviour {
 	private OTSprite OTComponent;
 	private int displayOffset;
     private Vector2 scrollPosition;
-    private int lastCount;
     private Texture2D progressBarTexture;
 
     private static GameController gameController;
@@ -49,13 +49,20 @@ public class ControlPanel : MonoBehaviour {
 
     public void AddCommand(GuiButton obj)
 	{
-        float objYPosition = obj.gameObject.transform.position.y;
-        int index = Math.Min(buttonList.Count, (int)((objYPosition - 4.7f) / -1f));
+        float objPositionY = obj.gameObject.transform.position.y;
+
+        var index = buttonList.FindIndex(guiButton => guiButton.gameObject.transform.position.y < objPositionY);
+        if (index == -1)
+        {
+            index = buttonList.Count;
+        }
+
+        //int index = Math.Max(0, Math.Min(buttonList.Count, (int)((objYPosition / 1.5f) )));
         //Debug.Log(objYPosition);
 
-        // TODO: insert depending on scrollPosition
-        buttonList.Insert(Math.Max(0,index), obj);
-        gameController.Game.CurrentLevel.PlayerSolution.Add(obj.command);
+        obj.index = index;
+        buttonList.Insert(index, obj);
+        gameController.Game.CurrentLevel.PlayerSolution.Insert(index, obj.command);
 		// Position the object correctly
         //obj.GetComponent<OTSprite>().position = new Vector2(0.5f, 4.7f - 2f * GetCommandsCount());
         //obj.gameObject.transform.position = new Vector3(0.5f, 4.7f - 2f * GetCommandsCount() - 1, -2);
@@ -66,18 +73,20 @@ public class ControlPanel : MonoBehaviour {
     /// <summary>
     /// update the commands positions relative to the scrollbar position
     /// </summary>
-    public void updatePositions(){
+    public void updatePositions()
+    {
         int index = 0;
         foreach(var button in buttonList){
-            button.gameObject.transform.position = new Vector3(0.5f, 4.7f + scrollPosition.y / 20f - 2f * index - 1, -2);
+            button.gameObject.transform.position = new Vector3(0.5f, 4.7f + scrollPosition.y / 20f - (GuiButton.HEIGHT) * index - 1, -2);
+            button.index = index;
             ++index;
         }
     }
 
     public static void RemoveCommand(GuiButton obj)
     {
-        gameController.Game.CurrentLevel.PlayerSolution.Remove(obj.command);
-        controlPanel.buttonList.Remove(obj);
+        gameController.Game.CurrentLevel.PlayerSolution.RemoveAt(obj.index);
+        controlPanel.buttonList.RemoveAt(obj.index);
         controlPanel.updatePositions();
 
     }
@@ -105,14 +114,9 @@ public class ControlPanel : MonoBehaviour {
             updatePositions();
         }
         int count = GetCommandsCount();
-        if (lastCount != count)
-        {
-            Debug.Log(count);
-            lastCount = count;
-        }
         GUILayout.Label("start !!!");
 
-        GUILayout.Space(50f * count);
+        GUILayout.Space(80f * count);
         GUILayout.Label("end !!!");
         GUILayout.EndScrollView();
         GUILayout.EndArea();

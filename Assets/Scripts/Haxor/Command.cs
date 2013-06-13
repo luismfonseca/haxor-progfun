@@ -25,7 +25,7 @@ namespace Haxor
             new CommandLevel1() { Name = "Skip" },
             new CommandLevel1() { Name = "Black" },
             new CommandLevel1() { Name = "Blue" },
-            new CommandLevel1() { Name = "Green" }
+            new CommandLevel1() { Name = "Red" }
         };
 
 
@@ -58,8 +58,14 @@ namespace Haxor
                     {
                         handler.ChangeCurrentColor(LineColor.Green);
                     };
+                case "Red":
+                    return (handler) =>
+                    {
+                        handler.ChangeCurrentColor(LineColor.Red);
+                    };
+                default:
+                    throw new Exception("Command Action undefined.");
             }
-            throw new Exception("Command Action undefined.");
         }
     }
 }

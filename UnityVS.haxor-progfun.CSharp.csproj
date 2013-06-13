@@ -165,10 +165,11 @@
     <Compile Include="Assets\Orthello\Standard Assets\OT\Tweening\OTTween.cs" />
     <Compile Include="Assets\Orthello\Standard Assets\OT\Tweening\OTTweenController.cs" />
     <Compile Include="Assets\Scripts\CommandComponent.cs" />
+    <Compile Include="Assets\Scripts\Controllers\ButtonsController.cs" />
+    <Compile Include="Assets\Scripts\Controllers\GameAreaController.cs" />
+    <Compile Include="Assets\Scripts\Controllers\GameController.cs" />
     <Compile Include="Assets\Scripts\ControlPanel.cs" />
     <Compile Include="Assets\Scripts\FixCameraViewPortOnPanel.cs" />
-    <Compile Include="Assets\Scripts\GameAreaController.cs" />
-    <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\GuiButton.cs" />
     <Compile Include="Assets\Scripts\Haxor\ArrayList.cs" />
     <Compile Include="Assets\Scripts\Haxor\Command.cs" />
