@@ -35,7 +35,8 @@ public class ControlPanel : MonoBehaviour {
         UpdateViewportRect();
     }
 
-	void Start() {
+	void Start()
+    {
 		OT.debug = true;
 		OTComponent = this.GetComponent<OTSprite>();
 		OTComponent.registerInput = true;
@@ -68,6 +69,7 @@ public class ControlPanel : MonoBehaviour {
         ViewportRect = new Rect(topleft.x, topleft.y, bottomRigth.x - topleft.x, bottomRigth.y - topleft.y);
         screenSize = new Vector2(Screen.width, Screen.height);
     }
+
     public void AddCommand(GuiButton obj)
 	{
         float objPositionY = obj.gameObject.transform.position.y;

@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityVS.haxor-progfun.CSharp", "UnityVS.haxor-progfun.CSharp.csproj", "{5F86F18A-3A09-FDB4-9B31-CF8602E97D08}"
 EndProject
-Project("{1FAC5C55-277D-4884-94A4-83DBDAF57E56}") = "UnityVS.haxor-progfun.UnityScript", "UnityVS.haxor-progfun.UnityScript.unityproj", "{0459EA22-70D6-2F3D-2EC2-458BE779F950}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityVS.haxor-progfun.CSharp.Editor", "UnityVS.haxor-progfun.CSharp.Editor.csproj", "{92E6BF8B-64A8-B48F-9A0B-6EDA102313B8}"
 EndProject
 Global
@@ -17,10 +15,6 @@ Global
 		{5F86F18A-3A09-FDB4-9B31-CF8602E97D08}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F86F18A-3A09-FDB4-9B31-CF8602E97D08}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F86F18A-3A09-FDB4-9B31-CF8602E97D08}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0459EA22-70D6-2F3D-2EC2-458BE779F950}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0459EA22-70D6-2F3D-2EC2-458BE779F950}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0459EA22-70D6-2F3D-2EC2-458BE779F950}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0459EA22-70D6-2F3D-2EC2-458BE779F950}.Release|Any CPU.Build.0 = Release|Any CPU
 		{92E6BF8B-64A8-B48F-9A0B-6EDA102313B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{92E6BF8B-64A8-B48F-9A0B-6EDA102313B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92E6BF8B-64A8-B48F-9A0B-6EDA102313B8}.Release|Any CPU.ActiveCfg = Release|Any CPU

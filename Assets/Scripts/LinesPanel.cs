@@ -59,6 +59,11 @@ public class LinesPanel : MonoBehaviour, IHandleCommand
         PlayerRunResultLines.Add(line);
     }
 
+    public void Move()
+    {
+
+    }
+
     public void RenderLineDraw(List<Line> lines, bool isPlayerLine = false)
     {
         string tag = isPlayerLine ? Tag.LineSegmentPlayer : Tag.LineSegment;

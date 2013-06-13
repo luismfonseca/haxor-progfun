@@ -57,10 +57,4 @@ public class GuiSelectionButton : MonoBehaviour {
         };
         transform.Translate(new Vector3(0f, 0f, 2f));
 	}
-
-    void Update()
-    {
-        // Fix orthelo default z position.
-        transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, 0f);
-    }
 }

@@ -54,41 +54,8 @@
     <Reference Include="UnityEditor">
       <HintPath>$(UnityPath)\Data\Managed\UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="GUIE_Core">
-      <HintPath>Assets\EWS.GUI\Core\GUIE_Core.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\EWS.GUI\DEMO\DEMO1\StartGameMenu.cs" />
-    <Compile Include="Assets\EWS.GUI\DEMO\Scripts\SimpleGUI.cs" />
-    <Compile Include="Assets\Extra GUI Skins\SkinTest.cs" />
-    <Compile Include="Assets\Orthello\Examples\0 - Simple Examples\(Unity Pro) NavMesh Pathfinding\Agent.cs" />
-    <Compile Include="Assets\Orthello\Examples\0 - Simple Examples\3D integration\App.cs" />
-    <Compile Include="Assets\Orthello\Examples\0 - Simple Examples\3D integration\Arrow.cs" />
-    <Compile Include="Assets\Orthello\Examples\0 - Simple Examples\Clipping\ClipSprites.cs" />
-    <Compile Include="Assets\Orthello\Examples\0 - Simple Examples\DragTest\DragTest.cs" />
-    <Compile Include="Assets\Orthello\Examples\0 - Simple Examples\DragTest\DragTestMain.cs" />
-    <Compile Include="Assets\Orthello\Examples\0 - Simple Examples\Multi Resolution Art\MultiResolution.cs" />
-    <Compile Include="Assets\Orthello\Examples\0 - Simple Examples\Persistance\PersistentSprite.cs" />
-    <Compile Include="Assets\Orthello\Examples\0 - Simple Examples\RotateTowards\TestRotateTowards.cs" />
-    <Compile Include="Assets\Orthello\Examples\0 - Simple Examples\TextSprites\OTTextChalc.cs" />
-    <Compile Include="Assets\Orthello\Examples\0 - Simple Examples\TextSprites\OTTextImages.cs" />
-    <Compile Include="Assets\Orthello\Examples\0 - Simple Examples\TextSprites\OTTextPortago.cs" />
-    <Compile Include="Assets\Orthello\Examples\1 - Paralax scrolling FilledSprite\CExample1.cs" />
-    <Compile Include="Assets\Orthello\Examples\2 - Moving collidable sprites\CBlock2.cs" />
-    <Compile Include="Assets\Orthello\Examples\2 - Moving collidable sprites\CExample2.cs" />
-    <Compile Include="Assets\Orthello\Examples\2 - Moving collidable sprites\CStar2.cs" />
-    <Compile Include="Assets\Orthello\Examples\3 - Shooting Asteroids\CAsteroid3.cs" />
-    <Compile Include="Assets\Orthello\Examples\3 - Shooting Asteroids\CBullet3.cs" />
-    <Compile Include="Assets\Orthello\Examples\3 - Shooting Asteroids\CExample3.cs" />
-    <Compile Include="Assets\Orthello\Examples\4 - Follow Target View\CExample4.cs" />
-    <Compile Include="Assets\Orthello\Examples\4 - Follow Target View\CMover4.cs" />
-    <Compile Include="Assets\Orthello\Examples\5 - Creating At Runtime\CExample5.cs" />
-    <Compile Include="Assets\Orthello\Examples\6 - Physics\CExample6.cs" />
-    <Compile Include="Assets\Orthello\Examples\7 - Tweening\CExample7.cs" />
-    <Compile Include="Assets\Orthello\Examples\7 - Tweening\CStar7_1.cs" />
-    <Compile Include="Assets\Orthello\Examples\7 - Tweening\CStar7_2.cs" />
-    <Compile Include="Assets\Orthello\Examples\8 - Prefab-Support\test8.cs" />
     <Compile Include="Assets\Orthello\Standard Assets\OT\_Base\OT.cs" />
     <Compile Include="Assets\Orthello\Standard Assets\OT\_Base\OTController.cs" />
     <Compile Include="Assets\Orthello\Standard Assets\OT\_Base\OTDevTrace.cs" />
@@ -174,6 +141,7 @@
     <Compile Include="Assets\Scripts\Haxor\ArrayList.cs" />
     <Compile Include="Assets\Scripts\Haxor\Commands\Command.cs" />
     <Compile Include="Assets\Scripts\Haxor\Commands\CommandLevel1.cs" />
+    <Compile Include="Assets\Scripts\Haxor\Commands\CommandLevel10.cs" />
     <Compile Include="Assets\Scripts\Haxor\Commands\CommandLevel2.cs" />
     <Compile Include="Assets\Scripts\Haxor\Game.cs" />
     <Compile Include="Assets\Scripts\Haxor\IHandleCommand.cs" />
@@ -188,24 +156,11 @@
     <Compile Include="Assets\Scripts\LineSegmentNext.cs" />
     <Compile Include="Assets\Scripts\LinesPanel.cs" />
     <Compile Include="Assets\Scripts\VectorLine.cs" />
-    <None Include="Assets\EWS.GUI\GUISkin Editor\README.txt" />
-    <None Include="Assets\EWS.GUI\README.txt" />
     <None Include="Assets\Fonts\Ubuntu\LICENCE.txt" />
-    <None Include="Assets\Orthello\Examples\0 - Simple Examples\Multi Resolution Art\atlas.xml" />
-    <None Include="Assets\Orthello\Examples\0 - Simple Examples\Persistance\-read-me.txt" />
-    <None Include="Assets\Orthello\Examples\0 - Simple Examples\RotateTowards\-read-me.txt" />
-    <None Include="Assets\Orthello\Examples\0 - Simple Examples\TextSprites\Atlases\chalk.xml" />
-    <None Include="Assets\Orthello\Examples\0 - Simple Examples\TextSprites\Atlases\glyph.xml" />
-    <None Include="Assets\Orthello\Examples\0 - Simple Examples\TextSprites\Atlases\img.xml" />
-    <None Include="Assets\Orthello\Examples\0 - Simple Examples\TextSprites\Atlases\russian.txt" />
-    <None Include="Assets\Orthello\Examples\0 - Simple Examples\TextSprites\lorem.txt" />
-    <None Include="Assets\Orthello\Examples\0 - Simple Examples\TextSprites\lorem-rus-utf8.txt" />
-    <None Include="Assets\Orthello\Examples\0 - Simple Examples\TextSprites\orthello-font-30.txt" />
-    <None Include="Assets\Orthello\Examples\4 - Follow Target View\-orthello-config.xml" />
     <None Include="Assets\Orthello\-Read-Me.txt" />
     <None Include="Assets\Orthello\Standard Assets\OT\_Base\TintedAlpha.shader" />
     <None Include="Assets\Orthello\-Update-Upgrade info.txt" />
-    <None Include="Assets\EWS.GUI\Core\GUIE_Core.dll" />
+    <None Include="Assets\SpriteAtlases\player.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2012\UnityVS.CSharp.targets" />
 </Project>

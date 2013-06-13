@@ -13,7 +13,6 @@ namespace Assets.Scripts.Haxor.Commands
         {
             new CommandLevel1() { Name = "Go" },
             new CommandLevel1() { Name = "Skip" },
-            new ChangeColor(),
             new CommandLevel1() { Name = "Black" },
             new CommandLevel1() { Name = "Blue" },
             new CommandLevel1() { Name = "Red" }

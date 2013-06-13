@@ -54,9 +54,6 @@
     <Reference Include="UnityEditor">
       <HintPath>$(UnityPath)\Data\Managed\UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="GUIE_Core">
-      <HintPath>Assets\EWS.GUI\Core\GUIE_Core.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Orthello\Examples\1 - Paralax scrolling FilledSprite\JSExample1.js" />
@@ -73,8 +70,6 @@
     <Compile Include="Assets\Orthello\Examples\7 - Tweening\JSExample7.js" />
     <Compile Include="Assets\Orthello\Examples\7 - Tweening\JSStar7_1.js" />
     <Compile Include="Assets\Orthello\Examples\7 - Tweening\JSStar7_2.js" />
-    <None Include="Assets\EWS.GUI\GUISkin Editor\README.txt" />
-    <None Include="Assets\EWS.GUI\README.txt" />
     <None Include="Assets\Fonts\Ubuntu\LICENCE.txt" />
     <None Include="Assets\Orthello\Examples\0 - Simple Examples\Multi Resolution Art\atlas.xml" />
     <None Include="Assets\Orthello\Examples\0 - Simple Examples\Persistance\-read-me.txt" />
@@ -90,13 +85,10 @@
     <None Include="Assets\Orthello\-Read-Me.txt" />
     <None Include="Assets\Orthello\Standard Assets\OT\_Base\TintedAlpha.shader" />
     <None Include="Assets\Orthello\-Update-Upgrade info.txt" />
-    <None Include="Assets\EWS.GUI\Core\GUIE_Core.dll" />
+    <None Include="Assets\SpriteAtlases\player.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets" />
-    <Folder Include="Assets\EWS.GUI" />
-    <Folder Include="Assets\EWS.GUI\Core" />
-    <Folder Include="Assets\EWS.GUI\GUISkin Editor" />
     <Folder Include="Assets\Fonts" />
     <Folder Include="Assets\Fonts\Ubuntu" />
     <Folder Include="Assets\Orthello" />
@@ -117,6 +109,7 @@
     <Folder Include="Assets\Orthello\Standard Assets" />
     <Folder Include="Assets\Orthello\Standard Assets\OT" />
     <Folder Include="Assets\Orthello\Standard Assets\OT\_Base" />
+    <Folder Include="Assets\SpriteAtlases" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2012\UnityVS.UnityScript.targets" />
 </Project>

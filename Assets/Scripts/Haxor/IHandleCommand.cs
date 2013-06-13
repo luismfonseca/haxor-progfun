@@ -16,5 +16,7 @@ namespace Assets.Scripts.Haxor
         void ChangeCurrentColor(LineColor color);
 
         // TODO Change angle, and whatnot
+
+        void Move();
     }
 }
