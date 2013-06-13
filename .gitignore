@@ -1,8 +1,9 @@
-[Ll]ibrary/
 [Tt]emp/
 [Oo]bj/
 
 *.svd
+*.dll
+*.mdb
 Library/*.asset
 Library/AssetImportState
 Library/AssetVersioning.db
