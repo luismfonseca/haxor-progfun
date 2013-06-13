@@ -16,6 +16,13 @@ public class ControlPanel : MonoBehaviour {
     private LinesPanel linesPanel;
     private static ControlPanel controlPanel;
     private List<GuiButton> buttonList;
+    private Camera mainCamera;
+    private Vector2 relativeSize;
+    private Vector2 topleft;
+    private Vector2 bottomRigth;
+    private Rect ViewportRect;
+    private Vector2 screenSize;
+    
 
     void Awake()
     {
@@ -23,6 +30,9 @@ public class ControlPanel : MonoBehaviour {
         gameController = GameController.Find();
         buttonList = new List<GuiButton>();
         controlPanel = this;
+        mainCamera = Camera.main;
+
+        UpdateViewportRect();
     }
 
 	void Start() {
@@ -44,9 +54,20 @@ public class ControlPanel : MonoBehaviour {
 	
 	void Update()
     {
-	    
+        if (screenSize.x != Screen.width || screenSize.y != Screen.height)
+        {
+            UpdateViewportRect();
+            
+        }
 	}
 
+    void UpdateViewportRect()
+    {
+        topleft = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0));
+        bottomRigth = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
+        ViewportRect = new Rect(topleft.x, topleft.y, bottomRigth.x - topleft.x, bottomRigth.y - topleft.y);
+        screenSize = new Vector2(Screen.width, Screen.height);
+    }
     public void AddCommand(GuiButton obj)
 	{
         float objPositionY = obj.gameObject.transform.position.y;
@@ -55,6 +76,8 @@ public class ControlPanel : MonoBehaviour {
         if (index == -1)
         {
             index = buttonList.Count;
+            //scrollPosition.y = Mathf.Infinity;
+            //scrollPosition.Set(scrollPosition.x,  Mathf.Infinity);
         }
 
         obj.setAsPlacedInCommandPanel(true);
@@ -69,9 +92,10 @@ public class ControlPanel : MonoBehaviour {
     /// </summary>
     public void updatePositions()
     {
+        float relativeHeight = (Screen.height / ViewportRect.height);
         int index = 0;
         foreach(var button in buttonList){
-            button.gameObject.transform.position = new Vector3(0.5f, 4.7f + scrollPosition.y / 20f - (GuiButton.HEIGHT) * index - 1, -2);
+            button.gameObject.transform.position = new Vector3(0.5f, 4.7f + (scrollPosition.y / relativeHeight) - (GuiButton.HEIGHT) * index - 1, -2);
             button.index = index;
             ++index;
         }
@@ -108,10 +132,7 @@ public class ControlPanel : MonoBehaviour {
             updatePositions();
         }
         int count = GetCommandsCount();
-        GUILayout.Label("start !!!");
-
-        GUILayout.Space(80f * count);
-        GUILayout.Label("end !!!");
+        GUILayout.Space(GuiButton.HEIGHT * (Screen.height/ViewportRect.height) * (count + 1));
         GUILayout.EndScrollView();
         GUILayout.EndArea();
 
