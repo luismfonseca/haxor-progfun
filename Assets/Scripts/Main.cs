@@ -31,9 +31,11 @@ public class Main : MonoBehaviour {
 
 	    }
 		if (GUI.Button(buttonRectscore, "HIGHEST SCORES")) {
+			 Application.LoadLevel("Score");
 
 	    }
 		if (GUI.Button(buttonRectcredits, "CREDITS")) {
+			 Application.LoadLevel("Credits");
 
 	    }
 	}

@@ -11,7 +11,7 @@ public class Credits : MonoBehaviour {
 	void OnGUI() {
 		int width = Screen.width;
 		int height = Screen.height;
-		
+		Rect buttonRectend = new Rect ((width/2-60), (height/2)+180, 140, 30);
 		Rect labelRect = new Rect (100, (height/2-150), width, (height/4));
 		Rect labelRect2 = new Rect (100, (height/2-75), width, (height/4));
 		Rect labelRect3 = new Rect (200, (height/2), width, (height/4));
@@ -24,6 +24,9 @@ public class Credits : MonoBehaviour {
 		GUI.Label(labelRect3, "Omar", style);
 		GUI.Label(labelRect4, "Luis", style);
 		GUI.Label(labelRect5, "Witold", style);
+		if (GUI.Button(buttonRectend, "MENU")) {
+	        Application.LoadLevel("Main");
+	    }
 	}
 	// Update is called once per frame
 	void Update () {

@@ -51,9 +51,10 @@ public class ScoreScene : MonoBehaviour {
 	
 		
 		
-		
 		int width = Screen.width;
 		int height = Screen.height;
+		Rect buttonRectend = new Rect ((width/2-60), (height/2)+180, 140, 30);
+		
 		Rect labelRect = new Rect (width/2-width / 8-40, 10, width, (height/4));
 		style.fontSize = width/25;
 	
@@ -68,7 +69,7 @@ public class ScoreScene : MonoBehaviour {
 		int i=0;
 		foreach(var score in highScores)
 		{
-		    Console.WriteLine(String.Format("{0}: {1} points", score.PlayerName, score.Score));
+		    //Console.WriteLine(String.Format("{0}: {1} points", score.PlayerName, score.Score));
 			if(i<10)
 			{
 				GUILayout.BeginArea ( new Rect( width/2-width / 8, 100+(i*30), width / 4, height / 4 ) );
@@ -77,6 +78,10 @@ public class ScoreScene : MonoBehaviour {
 			}	
 			i++;
 		}
+		
+		if (GUI.Button(buttonRectend, "MENU")) {
+	        Application.LoadLevel("Main");
+	    }
 		
 	}
 	
