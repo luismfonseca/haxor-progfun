@@ -44,6 +44,7 @@ namespace Haxor
         public static readonly LineColor Red = new LineColor(Color.red);
         public static readonly LineColor Blue = new LineColor(Color.blue);
         public static readonly LineColor Green = new LineColor(Color.green);
+        public static readonly LineColor Yellow = new LineColor(Color.yellow);
         public static readonly LineColor Transparent = new LineColor(new Color(0f, 0f, 0f, 0f));
         
         public Color Color;

@@ -10,15 +10,19 @@ public class GameController : MonoBehaviour
     public GameObject CommandComponent;
 
     public LinesPanel linesPanel;
+    public ControlPanel controlPanel;
 
     private ButtonsController buttonsController;
+    private PlayerController playerController;
 
     void Awake()
     {
         Game = Game.NewGame();
         //Game = Game.Load();
         linesPanel = GameObject.FindObjectOfType(typeof(LinesPanel)) as LinesPanel;
+        controlPanel = GameObject.FindObjectOfType(typeof(ControlPanel)) as ControlPanel;
         buttonsController = new ButtonsController(this);
+        playerController = PlayerController.Find();
     }
 
     void Start()
@@ -46,6 +50,7 @@ public class GameController : MonoBehaviour
         if (GUILayout.Button("Play"))
         {
             linesPanel.Play(Game.CurrentLevel.PlayerSolution);
+            playerController.Play();
         }
     }
 

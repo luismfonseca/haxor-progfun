@@ -13,20 +13,16 @@ namespace Assets.Scripts.Haxor.Commands
         public static Command[] Commands = new Command[]
         {
             new CommandLevel10() { Name = "Move" },
+            new CommandLevel10() { Name = "Jump" },
+            new Repeat()
         };
 
         public override Action<IHandleCommand> GetAction()
         {
-            switch (Name)
+            return (handler) =>
             {
-                case "Move":
-                    return (handler) =>
-                    {
-                        handler.Move();
-                    };
-                default:
-                    throw new Exception("Command Action undefined.");
-            }
+                handler.PlayerAction(this);
+            };
         }
 
         public override object Clone()
@@ -35,4 +31,36 @@ namespace Assets.Scripts.Haxor.Commands
         }
     }
 
+    [Serializable]
+    public class Repeat : Command
+    {
+        public int Times;
+        public List<Command> Commands;
+
+        public Repeat()
+        {
+            Name = "Repeat";
+            Times = 5;
+            Commands = new List<Command>();
+        }
+
+        public override Action<IHandleCommand> GetAction()
+        {
+            return (handler) =>
+            {
+                for (int i = 0; i < Times; i++)
+                {
+                    foreach (var command in Commands)
+                    {
+                        command.GetAction()(handler);
+                    }
+                }
+            };
+        }
+
+        public override object Clone()
+        {
+            return new Repeat() { Name = Name };
+        }
+    }
 }

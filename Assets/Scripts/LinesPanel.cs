@@ -59,9 +59,9 @@ public class LinesPanel : MonoBehaviour, IHandleCommand
         PlayerRunResultLines.Add(line);
     }
 
-    public void Move()
+    public void PlayerAction(Command command)
     {
-
+        PlayerController.Find().Commands.Add(command);
     }
 
     public void RenderLineDraw(List<Line> lines, bool isPlayerLine = false)

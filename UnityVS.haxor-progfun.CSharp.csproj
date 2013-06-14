@@ -130,6 +130,7 @@
     <Compile Include="Assets\Orthello\Standard Assets\OT\Tweening\OTEasing.cs" />
     <Compile Include="Assets\Orthello\Standard Assets\OT\Tweening\OTTween.cs" />
     <Compile Include="Assets\Orthello\Standard Assets\OT\Tweening\OTTweenController.cs" />
+    <Compile Include="Assets\PlayerController.cs" />
     <Compile Include="Assets\Scripts\CommandComponent.cs" />
     <Compile Include="Assets\Scripts\Controllers\ButtonsController.cs" />
     <Compile Include="Assets\Scripts\Controllers\GameAreaController.cs" />
@@ -137,6 +138,7 @@
     <Compile Include="Assets\Scripts\ControlPanel.cs" />
     <Compile Include="Assets\Scripts\FixCameraViewPortOnPanel.cs" />
     <Compile Include="Assets\Scripts\GuiButton.cs" />
+    <Compile Include="Assets\Scripts\GuiRepeatButton.cs" />
     <Compile Include="Assets\Scripts\GuiSelectionButton.cs" />
     <Compile Include="Assets\Scripts\Haxor\ArrayList.cs" />
     <Compile Include="Assets\Scripts\Haxor\Commands\Command.cs" />

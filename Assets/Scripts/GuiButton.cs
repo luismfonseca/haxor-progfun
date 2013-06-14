@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Haxor;
+using System;
 
 public class GuiButton : MonoBehaviour {
 
@@ -12,9 +13,9 @@ public class GuiButton : MonoBehaviour {
     public Command command;
     public int index;
 
-    private bool isPlacedInCommandsPanel;
+    protected bool isPlacedInCommandsPanel;
 
-    public float Height
+    public virtual float Height
     {
         get
         {
@@ -26,7 +27,7 @@ public class GuiButton : MonoBehaviour {
     {
 		this.name = this.gameObject.name;
 		OTComponent = this.GetComponent<OTSprite>();
-        OTComponent.size = new Vector2(WIDTH, Height);
+        OTComponent.size = new Vector2(WIDTH, 2f);
 		OTComponent.onDragStart += (owner) => {
 			this.gameObject.name = "Command-" + ControlPanel.GetCommandsCount();
 			var newObject = OT.CreateSprite(this.name);
@@ -34,7 +35,7 @@ public class GuiButton : MonoBehaviour {
             newObject.GetComponent<GuiButton>().command = this.command.Clone() as Command;
             OTComponent.onDragStart = (component) =>
             {
-                ControlPanel.RemoveCommand(this);
+                GameController.Find().controlPanel.RemoveCommand(this);
             }; // Remove this action
 		};
 
@@ -65,7 +66,7 @@ public class GuiButton : MonoBehaviour {
         }	
 	}
 
-    public void setAsPlacedInCommandPanel(bool placed)
+    public virtual void setAsPlacedInCommandPanel(bool placed)
     {
         isPlacedInCommandsPanel = placed;
         if (placed)
@@ -93,13 +94,27 @@ public class GuiButton : MonoBehaviour {
                 default:
                     break;
             }
+            foreach (Transform child in transform)
+            {
+                child.gameObject.SetActive(true);
+            }
         }
         else
         {
             foreach (Transform child in transform)
             {
-                GameObject.DestroyObject(child.gameObject);
+                child.gameObject.SetActive(false);
             }
         }
+    }
+
+    public virtual bool AddCommand(GuiButton obj)
+    {
+        return false;
+    }
+
+    public virtual void RemoveCommand(GuiButton obj)
+    {
+        throw new Exception("Should not be called.");
     }
 }

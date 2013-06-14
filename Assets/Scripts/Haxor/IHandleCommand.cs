@@ -17,6 +17,6 @@ namespace Assets.Scripts.Haxor
 
         // TODO Change angle, and whatnot
 
-        void Move();
+        void PlayerAction(Command command);
     }
 }

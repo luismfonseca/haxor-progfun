@@ -21,9 +21,9 @@ namespace Haxor
         public Level10()
         {
             nextLevelScene = "Level11";
-            MaximumLines = 10;
+            MaximumLines = 100;
 
-            Patterns = new Pattern[] { new Pattern(), new Pattern(), new Pattern(), new Pattern(), new Pattern(), new Pattern() };
+            Patterns = new Pattern[] { new Pattern(), new Pattern(), new Pattern(), new Pattern(), new Pattern(), new Pattern(), new Pattern() };
             // Some are repeated to increase their odds
             Patterns[0].Add(new Line() { LineColor = LineColor.Black });
             Patterns[1].Add(new Line() { LineColor = LineColor.Black });
@@ -31,6 +31,12 @@ namespace Haxor
             Patterns[3].Add(new Line() { LineColor = LineColor.Red });
             Patterns[4].Add(new Line() { LineColor = LineColor.Blue });
             Patterns[5].Add(new Line() { LineColor = LineColor.Blue });
+
+            Patterns[6].Add(new Line() { LineColor = LineColor.Black });
+            Patterns[6].Add(new Line() { LineColor = LineColor.Yellow });
+            Patterns[6].Add(new Line() { LineColor = LineColor.Transparent });
+            Patterns[6].Add(new Line() { LineColor = LineColor.Yellow });
+            Patterns[6].Add(new Line() { LineColor = LineColor.Black });
 
             GenerateGuideline();
         }

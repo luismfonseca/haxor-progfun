@@ -6,7 +6,9 @@ using System.Linq;
 using Haxor;
 
 public class ControlPanel : MonoBehaviour {
-	
+
+    public List<GuiButton> buttonList;
+
 	private OTSprite OTComponent;
 	private int displayOffset;
     private Vector2 scrollPosition;
@@ -15,7 +17,6 @@ public class ControlPanel : MonoBehaviour {
     private static GameController gameController;
     private LinesPanel linesPanel;
     private static ControlPanel controlPanel;
-    private List<GuiButton> buttonList;
     private Camera mainCamera;
     private Vector2 relativeSize;
     private Vector2 topleft;
@@ -23,7 +24,6 @@ public class ControlPanel : MonoBehaviour {
     private Rect ViewportRect;
     private Vector2 screenSize;
     
-
     void Awake()
     {
         linesPanel = GameObject.FindObjectOfType(typeof(LinesPanel)) as LinesPanel;
@@ -77,16 +77,39 @@ public class ControlPanel : MonoBehaviour {
         if (index == -1)
         {
             index = buttonList.Count;
-            //scrollPosition.y = Mathf.Infinity;
-            //scrollPosition.Set(scrollPosition.x,  Mathf.Infinity);
         }
 
+        // Pass the event to the previous container to see if he can handle it
+        bool handled = false;
+        if (index != 0)
+        {
+            handled = buttonList[index - 1].AddCommand(obj);
+        }
+        if (handled == false)
+        {
+            obj.index = index;
+            buttonList.Insert(index, obj);
+            gameController.Game.CurrentLevel.PlayerSolution.Insert(index, obj.command);
+        }
         obj.setAsPlacedInCommandPanel(true);
-        obj.index = index;
-        buttonList.Insert(index, obj);
-        gameController.Game.CurrentLevel.PlayerSolution.Insert(index, obj.command);
         updatePositions();
 	}
+
+    public void RemoveCommand(GuiButton obj)
+    {
+        if (obj.transform.parent != null)
+        {
+            (obj.transform.parent.gameObject.GetComponent<GuiButton>()).RemoveCommand(obj);
+        }
+        else
+        {
+            gameController.Game.CurrentLevel.PlayerSolution.RemoveAt(obj.index);
+            controlPanel.buttonList.RemoveAt(obj.index);
+            controlPanel.updatePositions();
+        }
+        updatePositions();
+        obj.setAsPlacedInCommandPanel(false);
+    }
 
     /// <summary>
     /// update the commands positions relative to the scrollbar position
@@ -95,24 +118,19 @@ public class ControlPanel : MonoBehaviour {
     {
         float relativeHeight = (Screen.height / ViewportRect.height);
         int index = 0;
-        foreach(var button in buttonList)
+        var positionOffset = 4.7f - 1f + (scrollPosition.y / relativeHeight);
+        foreach (var button in buttonList)
         {
             button.gameObject.transform.position =
-                    new Vector3(0.5f, 4.7f + (scrollPosition.y / relativeHeight) - (button.Height) * index - 1, -2);
+                    new Vector3(0.5f, positionOffset, -2);
             button.index = index;
+            positionOffset -= (button.Height);
             ++index;
         }
     }
 
-    public static void RemoveCommand(GuiButton obj)
+	public static int GetCommandsCount()
     {
-        obj.setAsPlacedInCommandPanel(false);
-        gameController.Game.CurrentLevel.PlayerSolution.RemoveAt(obj.index);
-        controlPanel.buttonList.RemoveAt(obj.index);
-        controlPanel.updatePositions();
-    }
-	
-	public static int GetCommandsCount() {
         return gameController.Game.CurrentLevel.PlayerSolution.Count;
 	}
 
