@@ -16,22 +16,22 @@ public class ScoreScene : MonoBehaviour {
 	public GUIStyle style;
 	
 	void Start () {
-	HighScore= new HighScore();
-
-	highScores = new List<HighScore>()
-	{
-	    new HighScore { PlayerName = "Helen", Score = 1000 },
-	    new HighScore { PlayerName = "Christophe", Score = 2000 },
-	    new HighScore { PlayerName = "Ruben", Score = 3000 },
-	    new HighScore { PlayerName = "John", Score = 4000 },
-	    new HighScore { PlayerName = "The Last Starfighter", Score = 5000 }
-	};
+		HighScore= new HighScore();
+	
+		//highScores = new List<HighScore>()
+		//{
+		//    new HighScore { PlayerName = "Helen", Score = 1000 },
+		//    new HighScore { PlayerName = "Christophe", Score = 2000 },
+		//    new HighScore { PlayerName = "Ruben", Score = 3000 },
+		//    new HighScore { PlayerName = "John", Score = 4000 },
+		//    new HighScore { PlayerName = "The Last Starfighter", Score = 5000 }
+		//};
 		
-		using (var fileStream = new FileStream(@"scores.dat", FileMode.Create, FileAccess.Write))
-		{
-		    var formatter = new BinaryFormatter();
-		    formatter.Serialize(fileStream, highScores);
-		}
+		//using (var fileStream = new FileStream(@"scores.dat", FileMode.Create, FileAccess.Write))
+		//{
+		//    var formatter = new BinaryFormatter();
+		//    formatter.Serialize(fileStream, highScores);
+		//}
 		
 		using (var fileStream = new FileStream(@"scores.dat", FileMode.Open, FileAccess.Read))
 		{

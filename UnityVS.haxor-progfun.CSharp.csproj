@@ -136,6 +136,7 @@
     <Compile Include="Assets\Scripts\Controllers\GameController.cs" />
     <Compile Include="Assets\Scripts\ControlPanel.cs" />
     <Compile Include="Assets\Scripts\Credits.cs" />
+    <Compile Include="Assets\Scripts\Enter_name.cs" />
     <Compile Include="Assets\Scripts\FixCameraViewPortOnPanel.cs" />
     <Compile Include="Assets\Scripts\GuiButton.cs" />
     <Compile Include="Assets\Scripts\GuiSelectionButton.cs" />
