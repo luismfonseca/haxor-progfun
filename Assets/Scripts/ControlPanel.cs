@@ -23,6 +23,11 @@ public class ControlPanel : MonoBehaviour {
     private Vector2 bottomRigth;
     private Rect ViewportRect;
     private Vector2 screenSize;
+
+   private static float fadeInFromLevelTime;
+    private static float toNextLevel;
+    private static readonly float fadeTime = 1.5f;
+    private static Texture2D fadeOutTexture;
     
     void Awake()
     {
@@ -50,6 +55,13 @@ public class ControlPanel : MonoBehaviour {
         progressBarTexture.SetPixel(0, 0, new Color(0, 255, 0));
         progressBarTexture.wrapMode = TextureWrapMode.Repeat;
         progressBarTexture.Apply();
+
+        toNextLevel = -1;
+        fadeInFromLevelTime = 0;
+        fadeOutTexture = new Texture2D(1, 1);
+        fadeOutTexture.SetPixel(0, 0, new Color(1, 1, 1));
+        fadeOutTexture.wrapMode = TextureWrapMode.Repeat;
+        fadeOutTexture.Apply();
 
 	}
 	
@@ -160,6 +172,36 @@ public class ControlPanel : MonoBehaviour {
         GUILayout.EndArea();
 
         drawProgressBar();
+
+ 	fadeInFromLevelTime += Time.deltaTime;
+        if (fadeInFromLevelTime < fadeTime)
+        {
+            GUI.color = new Color(1, 1, 1, fadeTime - fadeInFromLevelTime);
+            GUI.depth = -100;
+            GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), fadeOutTexture);
+        }
+        else if (toNextLevel > -1)
+        {
+            toNextLevel += Time.deltaTime;
+            if (toNextLevel >= 1)
+            {
+                toNextLevel = 1;
+                Application.LoadLevel(gameController.Game.CurrentLevel.nextLevelScene);
+            }
+
+            GUI.color = new Color(1, 1, 1, toNextLevel);
+            GUI.depth = -100;
+            GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), fadeOutTexture);
+
+
+        }
+
+    }
+
+    public static void fadeToNextLevel()
+    {
+        toNextLevel = 0;
+
     }
 
     /// <summary>
@@ -169,11 +211,10 @@ public class ControlPanel : MonoBehaviour {
     {
         int width = Screen.width, height = Screen.height;
 
-        int currentLevel = 1;
+        int currentLevel = gameController.Game.CurrentLevelNumber;
         string currentLevelString = "Level" + currentLevel;
         string nextLevelString = "Level" + ( currentLevel + 1 );
 
-        // omar needs to change this to the real one which someone he knows is responsible for calculating it in the first place.
         float progress = Game.EvaluateProgress(gameController.Game.CurrentLevel.Lines, linesPanel.PlayerRunResultLines);
 
         float labelHorizontalMargin = 0f;

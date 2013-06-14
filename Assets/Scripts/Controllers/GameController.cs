@@ -17,12 +17,17 @@ public class GameController : MonoBehaviour
 
     void Awake()
     {
-        Game = Game.NewGame();
+        Game.init();
+        //Game = Game.NewGame();
         //Game = Game.Load();
         linesPanel = GameObject.FindObjectOfType(typeof(LinesPanel)) as LinesPanel;
         controlPanel = GameObject.FindObjectOfType(typeof(ControlPanel)) as ControlPanel;
         buttonsController = new ButtonsController(this);
-        playerController = PlayerController.Find();
+        if (Game.CurrentLevelNumber > 9)
+        {
+            playerController = PlayerController.Find();
+        }
+      
     }
 
     void Start()
@@ -49,9 +54,16 @@ public class GameController : MonoBehaviour
         }
         if (GUILayout.Button("Play"))
         {
-            playerController.Stop();
-            linesPanel.Play(Game.CurrentLevel.PlayerSolution);
-            playerController.Play();
+            if (Game.CurrentLevelNumber > 9)
+            {
+                playerController.Stop();
+                linesPanel.Play(Game.CurrentLevel.PlayerSolution);
+                playerController.Play();
+            }
+            else
+            {
+                linesPanel.Play(Game.CurrentLevel.PlayerSolution);
+            }
         }
     }
 

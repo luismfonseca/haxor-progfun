@@ -24,8 +24,9 @@ public class LineSegmentNext : MonoBehaviour {
             float progress = Game.EvaluateProgress(level.Lines, gameController.linesPanel.PlayerRunResultLines);
             if (progress >= 1)
             {
-                Debug.Log("YOU!!!!!!!!!!! WIN !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                Application.LoadLevel(level.nextLevelScene);
+                //Debug.Log("YOU!!!!!!!!!!! WIN !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                //Application.LoadLevel(level.nextLevelScene);
+                ControlPanel.fadeToNextLevel();
             }
         }
     }

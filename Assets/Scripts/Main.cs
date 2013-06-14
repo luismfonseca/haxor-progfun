@@ -25,7 +25,7 @@ public class Main : MonoBehaviour {
 		GUI.Label(labelRect2, "progfun", style);
 		
 		 if (GUI.Button(buttonRectplay, "START GAME")) {
-	       // Application.LoadLevel("level1");
+             Application.LoadLevel("SceneStoryLevel1");
 	    }
 		if (GUI.Button(buttonRectload, "LOAD GAME")) {
 

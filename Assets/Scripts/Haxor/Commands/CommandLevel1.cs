@@ -37,10 +37,10 @@ namespace Assets.Scripts.Haxor.Commands
                     {
                         handler.ChangeCurrentColor(LineColor.Black);
                     };
-                case "Green":
+                case "Blue":
                     return (handler) =>
                     {
-                        handler.ChangeCurrentColor(LineColor.Green);
+                        handler.ChangeCurrentColor(LineColor.Blue);
                     };
                 case "Red":
                     return (handler) =>

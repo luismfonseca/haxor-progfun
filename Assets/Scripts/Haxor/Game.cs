@@ -15,10 +15,10 @@ namespace Haxor
         private const string GAME_FILENAME = "userSavedGame.dat";
 
         public List<Level> Levels;
-
         public Level CurrentLevel;
 
-        public int PlayerScore;
+        public int CurrentLevelNumber;
+        public static int PlayerScore;
 
         public static float EvaluateProgress(List<Line> original, List<Line> toBeValidated)
         {
@@ -38,12 +38,21 @@ namespace Haxor
         {
             Game newGame = new Game();
 
-            newGame.Levels = new List<Level>();
-            newGame.Levels.Add(new Level1());
-            newGame.Levels.Add(new Level10());
+            //newGame.Levels = new List<Level>();
+            //newGame.Levels.Add(new Level1());
+            //newGame.Levels.Add(new Level2());
 
-            newGame.CurrentLevel = newGame.Levels[1];
+            //newGame.CurrentLevel = newGame.Levels[Math.Min(CurrentLevelNumber, newGame.Levels.Count) - 1];
             return newGame;
+        }
+
+        public void init() {
+            switch (CurrentLevelNumber)
+            {
+                case 1: CurrentLevel = new Level1(); break;
+                case 2: CurrentLevel = new Level2(); break;
+                case 10: CurrentLevel = new Level10(); break;
+            }
         }
 
         public static void Save(Game Game)
