@@ -6,21 +6,23 @@ using Assets.Scripts.Haxor.Util;
 
 namespace Haxor
 {
-    [Serializable]	
-	public class HighScore : List<KeyValuePair<string, int>>
+    [Serializable]
+	public class HighScore : IComparable
 	{
-        [XmlIgnore]
-        private const string FILENAME = "HighScore.dat";
-
-        public static void Save(HighScore highScore)
-        {
-            BinarySerialization.Serialize(highScore, FILENAME);
-        }
-
-        public static HighScore Load()
-        {
-	            return BinarySerialization.Deserialize<HighScore>(FILENAME);
-        }
-	}
+	    public string PlayerName { get; set; }
 	
+	    public int Score { get; set; }
+		
+		public int CompareTo(object obj)
+	    {
+	        var otherScore = (HighScore) obj;
+	        if (Score == otherScore.Score)            
+	            return 0;            
+	
+	        if (Score < otherScore.Score)            
+	            return 1;            
+	
+	        return -1;
+	    }
+	}
 }
