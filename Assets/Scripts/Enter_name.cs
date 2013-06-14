@@ -17,7 +17,7 @@ public class Enter_name : MonoBehaviour {
 	int score;
 	int i;
 	bool test=false;
-	public string username="zbychu";
+	public string username="";
 	// Use this for initialization
 	void Start () {
 		HighScore= new HighScore();
@@ -71,7 +71,7 @@ public class Enter_name : MonoBehaviour {
 			 
 		}
 		if(GUI.Button(buttonRectmenu, "Menu")) {
-	    	Application.LoadLevel("Menu");
+	    	Application.LoadLevel("Main");
 	   	}
 	}
 	// Update is called once per frame
