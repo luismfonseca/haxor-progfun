@@ -23,11 +23,7 @@ public class GameController : MonoBehaviour
         linesPanel = GameObject.FindObjectOfType(typeof(LinesPanel)) as LinesPanel;
         controlPanel = GameObject.FindObjectOfType(typeof(ControlPanel)) as ControlPanel;
         buttonsController = new ButtonsController(this);
-        if (Game.CurrentLevelNumber > 9)
-        {
-            playerController = PlayerController.Find();
-        }
-      
+        
     }
 
     void Start()
@@ -38,8 +34,12 @@ public class GameController : MonoBehaviour
 	
     void OnLevelWasLoaded(int level)
     {
-        var playerGameObject = GameObject.FindGameObjectWithTag(Tag.Player);
-        playerGameObject.SetActive(Game.CurrentLevel.DisplayCharacter);
+        if (Game.CurrentLevelNumber > 9)
+        {
+            playerController = PlayerController.Find();
+            var playerGameObject = GameObject.FindGameObjectWithTag(Tag.Player);
+            playerGameObject.SetActive(Game.CurrentLevel.DisplayCharacter);
+        }
     }
 
     void OnGUI()
@@ -65,6 +65,7 @@ public class GameController : MonoBehaviour
                 linesPanel.Play(Game.CurrentLevel.PlayerSolution);
             }
         }
+        GUILayout.Label("score: " + Game.PlayerScore);
     }
 
     public static GameController Find()

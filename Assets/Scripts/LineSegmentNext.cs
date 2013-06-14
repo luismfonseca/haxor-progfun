@@ -26,6 +26,7 @@ public class LineSegmentNext : MonoBehaviour {
             {
                 //Debug.Log("YOU!!!!!!!!!!! WIN !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
                 //Application.LoadLevel(level.nextLevelScene);
+                Game.PlayerScore += 1000;
                 ControlPanel.fadeToNextLevel();
             }
         }

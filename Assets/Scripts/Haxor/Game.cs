@@ -18,7 +18,7 @@ namespace Haxor
         public Level CurrentLevel;
 
         public int CurrentLevelNumber;
-        public static int PlayerScore;
+        public static int PlayerScore = 0;
 
         public static float EvaluateProgress(List<Line> original, List<Line> toBeValidated)
         {
