@@ -49,6 +49,7 @@ public class GameController : MonoBehaviour
         }
         if (GUILayout.Button("Play"))
         {
+            playerController.Stop();
             linesPanel.Play(Game.CurrentLevel.PlayerSolution);
             playerController.Play();
         }

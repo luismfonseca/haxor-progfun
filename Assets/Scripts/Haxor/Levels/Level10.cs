@@ -35,6 +35,7 @@ namespace Haxor
             Patterns[6].Add(new Line() { LineColor = LineColor.Black });
             Patterns[6].Add(new Line() { LineColor = LineColor.Yellow });
             Patterns[6].Add(new Line() { LineColor = LineColor.Transparent });
+            Patterns[6].Add(new Line() { LineColor = LineColor.Transparent });
             Patterns[6].Add(new Line() { LineColor = LineColor.Yellow });
             Patterns[6].Add(new Line() { LineColor = LineColor.Black });
 

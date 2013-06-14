@@ -130,12 +130,14 @@
     <Compile Include="Assets\Orthello\Standard Assets\OT\Tweening\OTEasing.cs" />
     <Compile Include="Assets\Orthello\Standard Assets\OT\Tweening\OTTween.cs" />
     <Compile Include="Assets\Orthello\Standard Assets\OT\Tweening\OTTweenController.cs" />
-    <Compile Include="Assets\PlayerController.cs" />
     <Compile Include="Assets\Scripts\CommandComponent.cs" />
     <Compile Include="Assets\Scripts\Controllers\ButtonsController.cs" />
     <Compile Include="Assets\Scripts\Controllers\GameAreaController.cs" />
     <Compile Include="Assets\Scripts\Controllers\GameController.cs" />
+    <Compile Include="Assets\Scripts\Controllers\PlayerController.cs" />
     <Compile Include="Assets\Scripts\ControlPanel.cs" />
+    <Compile Include="Assets\Scripts\Credits.cs" />
+    <Compile Include="Assets\Scripts\Enter_name.cs" />
     <Compile Include="Assets\Scripts\FixCameraViewPortOnPanel.cs" />
     <Compile Include="Assets\Scripts\GuiButton.cs" />
     <Compile Include="Assets\Scripts\GuiRepeatButton.cs" />
@@ -146,6 +148,7 @@
     <Compile Include="Assets\Scripts\Haxor\Commands\CommandLevel10.cs" />
     <Compile Include="Assets\Scripts\Haxor\Commands\CommandLevel2.cs" />
     <Compile Include="Assets\Scripts\Haxor\Game.cs" />
+    <Compile Include="Assets\Scripts\Haxor\HighScore.cs" />
     <Compile Include="Assets\Scripts\Haxor\IHandleCommand.cs" />
     <Compile Include="Assets\Scripts\Haxor\Levels\Level.cs" />
     <Compile Include="Assets\Scripts\Haxor\Levels\Level1.cs" />
@@ -159,6 +162,8 @@
     <Compile Include="Assets\Scripts\Haxor\Util\XmlSerialization.cs" />
     <Compile Include="Assets\Scripts\LineSegmentNext.cs" />
     <Compile Include="Assets\Scripts\LinesPanel.cs" />
+    <Compile Include="Assets\Scripts\Main.cs" />
+    <Compile Include="Assets\Scripts\ScoreScene.cs" />
     <Compile Include="Assets\Scripts\VectorLine.cs" />
     <None Include="Assets\Fonts\Ubuntu\LICENCE.txt" />
     <None Include="Assets\Orthello\-Read-Me.txt" />
