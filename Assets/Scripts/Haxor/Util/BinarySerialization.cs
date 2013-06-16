@@ -5,7 +5,7 @@ using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 
-namespace Assets.Scripts.Haxor.Util
+namespace Haxor.Util
 {
     public static class BinarySerialization
     {

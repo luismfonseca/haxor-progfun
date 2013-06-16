@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System;
 using Haxor.Util;
 using System.Xml.Serialization;
-using Assets.Scripts.Haxor.Util;
+using Haxor.Util;
 using System.IO;
 
 namespace Haxor
@@ -17,6 +17,7 @@ namespace Haxor
         private const string GAME_FILENAME = "userSavedGame.dat";
 
         public int PlayerScore = 0;
+        public string PlayerName { get; set; }
         
         public List<Level> Levels;
         public int CurrentLevelNumber;

@@ -1,17 +1,20 @@
 ﻿using UnityEngine;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using Haxor;
 
-public class PlayerController : MonoBehaviour {
-
+public class PlayerController : MonoBehaviour
+{
     public List<Command> Commands;
     private string MyCommandNow;
     private OTAnimatingSprite OTComponent;
     private Vector2 initialPosition;
+    private GameController gameController;
 
     void Awake()
     {
+        gameController = GameController.Find();
         Commands = new List<Command>();
         OTComponent = this.GetComponent<OTAnimatingSprite>();
         initialPosition = OTComponent.position;
@@ -71,6 +74,7 @@ public class PlayerController : MonoBehaviour {
                     {
                         MyCommandNow = "MoveSlower";
                         OTComponent.Play("fallRight");
+                        rigidbody.angularVelocity = Vector3.zero;
                         rigidbody.velocity = new Vector3(0f, 9f, 0f);
                     }
                     yield return new WaitForSeconds(0.6f);
@@ -80,6 +84,12 @@ public class PlayerController : MonoBehaviour {
         }
         Commands.Clear();
         MyCommandNow = null;
+
+        // If on last linesegment, advance level
+        if (GameObject.FindGameObjectsWithTag(Tag.LineSegment).Last().transform.position.x < transform.position.x)
+        {
+            StoryController.Find().Advance();
+        }
     }
 
     private void ResetCharacter()

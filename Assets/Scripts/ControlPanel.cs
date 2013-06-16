@@ -46,7 +46,6 @@ public class ControlPanel : MonoBehaviour {
 		OTComponent = this.GetComponent<OTSprite>();
 		OTComponent.registerInput = true;
 		OTComponent.onReceiveDrop += (owner) => {
-            gameController.Game.PlayerScore -= 25;
             AddCommand(OTComponent.dropTarget.gameObject.GetComponent<GuiButton>());
 		};
 		displayOffset = 0;
@@ -88,6 +87,7 @@ public class ControlPanel : MonoBehaviour {
         if (index == -1)
         {
             index = buttonList.Count;
+            scrollPosition = new Vector2(0, int.MaxValue);
         }
 
         // Pass the event to the previous container to see if he can handle it
@@ -162,6 +162,7 @@ public class ControlPanel : MonoBehaviour {
         if (scrollPosition != lastScrollPosition)
         {
             updatePositions();
+            Debug.Log(scrollPosition.y);
         }
 
         float totalHeight = controlPanel.buttonList.Aggregate(0f, (heightSum, button) => { return heightSum + button.Height; }) + 4f;

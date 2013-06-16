@@ -30,6 +30,7 @@ public class LinesPanel : MonoBehaviour, IHandleCommand
 
     public void Play(PlayerSolution playerSolution)
     {
+        gameController.Game.PlayerScore -= 50;
         GameObject.FindGameObjectsWithTag(Tag.LineSegmentPlayer).ToList().ForEach(gameObject => Destroy(gameObject));
 
         PlayerRunResultLines = new List<Line>();
@@ -43,17 +44,20 @@ public class LinesPanel : MonoBehaviour, IHandleCommand
 
     public void AddLine(Line line)
     {
+        gameController.Game.PlayerScore -= 5;
         line.LineColor = PlayerRunCurrentLineColor;
         PlayerRunResultLines.Add(line);
     }
 
     public void ChangeCurrentColor(LineColor color)
     {
+        gameController.Game.PlayerScore -= 5;
         PlayerRunCurrentLineColor = color;
     }
 
     public void SkipLine()
     {
+        gameController.Game.PlayerScore -= 5;
         var line = new Line();
         line.LineColor = LineColor.Transparent;
         PlayerRunResultLines.Add(line);
@@ -61,6 +65,7 @@ public class LinesPanel : MonoBehaviour, IHandleCommand
 
     public void PlayerAction(Command command)
     {
+        gameController.Game.PlayerScore -= 5;
         PlayerController.Find().Commands.Add(command);
     }
 

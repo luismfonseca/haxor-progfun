@@ -54,11 +54,16 @@ public class GuiButton : MonoBehaviour
             }
         };
 	}
-	
+
+    void Update()
+    {
+        OTComponent.draggable = !isPlacedInCommandsPanel
+                                || transform.position.y < 6f && transform.position.y > -6f;
+    }
+
 	void OnGUI()
     {
-        float ypos = this.gameObject.transform.position.y;
-        if (ypos > 6 || ypos < 6)
+        if (OTComponent.draggable)
         {
             Vector3 screenPos = OT.inputCameras[0].WorldToScreenPoint(this.gameObject.transform.position);
             GUI.Label(
