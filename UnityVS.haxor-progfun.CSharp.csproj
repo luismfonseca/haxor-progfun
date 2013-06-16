@@ -132,6 +132,7 @@
     <Compile Include="Assets\Orthello\Standard Assets\OT\Tweening\OTTweenController.cs" />
     <Compile Include="Assets\Scripts\CommandComponent.cs" />
     <Compile Include="Assets\Scripts\Controllers\ButtonsController.cs" />
+    <Compile Include="Assets\Scripts\Controllers\CreditsController.cs" />
     <Compile Include="Assets\Scripts\Controllers\GameAreaController.cs" />
     <Compile Include="Assets\Scripts\Controllers\GameController.cs" />
     <Compile Include="Assets\Scripts\Controllers\MainMenuController.cs" />
@@ -158,6 +159,7 @@
     <Compile Include="Assets\Scripts\Haxor\Line.cs" />
     <Compile Include="Assets\Scripts\Haxor\Pattern.cs" />
     <Compile Include="Assets\Scripts\Haxor\Prototype.cs" />
+    <Compile Include="Assets\Scripts\Haxor\SkinStyle.cs" />
     <Compile Include="Assets\Scripts\Haxor\Tag.cs" />
     <Compile Include="Assets\Scripts\Haxor\UserSolution.cs" />
     <Compile Include="Assets\Scripts\Haxor\Util\BinarySerialization.cs" />

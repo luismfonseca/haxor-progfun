@@ -24,17 +24,17 @@ public class MainMenuController : MonoBehaviour
             Application.LoadLevel("SceneStoryLevel1");
         }
 
-        if (GUI.Button(new Rect(CONTENT_START_X, CONTENT_START_Y + FORM_CELL_HEIGHT, FORM_CELL_WIDTH, FORM_CELL_HEIGHT), "LOAD GAME"))
+        if (GUI.Button(new Rect(CONTENT_START_X, CONTENT_START_Y + FORM_CELL_HEIGHT + 5, FORM_CELL_WIDTH, FORM_CELL_HEIGHT), "LOAD GAME"))
         {
             // TODO
         }
 
-        if (GUI.Button(new Rect(CONTENT_START_X, CONTENT_START_Y + 2 * FORM_CELL_HEIGHT, FORM_CELL_WIDTH, FORM_CELL_HEIGHT), "HIGHSCORES"))
+        if (GUI.Button(new Rect(CONTENT_START_X, CONTENT_START_Y + 2 * (FORM_CELL_HEIGHT + 5), FORM_CELL_WIDTH, FORM_CELL_HEIGHT), "HIGHSCORES"))
         {
             Application.LoadLevel("Score");
         }
 
-        if (GUI.Button(new Rect(CONTENT_START_X, CONTENT_START_Y + 3 * FORM_CELL_HEIGHT, FORM_CELL_WIDTH, FORM_CELL_HEIGHT), "CREDITS"))
+        if (GUI.Button(new Rect(CONTENT_START_X, CONTENT_START_Y + 3 * (FORM_CELL_HEIGHT + 5), FORM_CELL_WIDTH, FORM_CELL_HEIGHT), "CREDITS"))
         {
             Application.LoadLevel("Credits");
         }

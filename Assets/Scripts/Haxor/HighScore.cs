@@ -15,14 +15,7 @@ namespace Haxor
 		
 		public int CompareTo(object obj)
 	    {
-	        var otherScore = (HighScore) obj;
-	        if (Score == otherScore.Score)            
-	            return 0;            
-	
-	        if (Score < otherScore.Score)            
-	            return 1;            
-	
-	        return -1;
+            return this.Score.CompareTo(((HighScore)obj).Score);
 	    }
 	}
 }
