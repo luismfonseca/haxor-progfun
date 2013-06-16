@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Linq;
 using System.Xml.Serialization;
 using System.Collections.Generic;
 using Assets.Scripts.Haxor.Commands;
@@ -16,9 +17,12 @@ namespace Haxor
         }
 
         [XmlIgnore]
-        internal static Pattern[] Patterns { get; set; }
+        [NonSerialized]
+        internal static Pattern[] Patterns;
 
-        public PlayerSolution PlayerSolution { get; set; }
+        [XmlIgnore] // TODO: Maybe support saving PlayerSolution in the future
+        [NonSerialized]
+        public PlayerSolution PlayerSolution = new PlayerSolution();
 
         public List<Line> Lines { get; set; }
 
@@ -50,6 +54,10 @@ namespace Haxor
                 {
                     Lines.Add(line);
                 }
+            }
+            if (Lines.Last().LineColor == LineColor.Transparent)
+            {
+                Lines.Add(new Line() { LineColor = LineColor.Black });
             }
 
             MaximumLines = Lines.Count; // A longer pattern might have to Line.Count > MaximumLines

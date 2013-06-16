@@ -24,11 +24,6 @@ namespace Assets.Scripts.Haxor.Commands
                 handler.PlayerAction(this);
             };
         }
-
-        public override object Clone()
-        {
-            return new CommandLevel3() { Name = Name };
-        }
     }
 
     [Serializable]
@@ -56,11 +51,6 @@ namespace Assets.Scripts.Haxor.Commands
                     }
                 }
             };
-        }
-
-        public override object Clone()
-        {
-            return new Repeat() { Name = Name };
         }
     }
 }
