@@ -67,8 +67,7 @@ public class PlayerController : MonoBehaviour {
                     OTComponent.Stop();
                     break;
                 case "Jump":
-                    Debug.Log("s = " + rigidbody.velocity.y);
-                    if (Mathf.Abs(rigidbody.velocity.y) < 1f)
+                    if (Mathf.Abs(rigidbody.velocity.y) < 1.5f)
                     {
                         MyCommandNow = "MoveSlower";
                         OTComponent.Play("fallRight");

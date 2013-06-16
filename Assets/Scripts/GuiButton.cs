@@ -3,8 +3,8 @@ using System.Collections;
 using Haxor;
 using System;
 
-public class GuiButton : MonoBehaviour {
-
+public class GuiButton : MonoBehaviour
+{
     public static readonly float WIDTH = 2f;
 
 	public GUIStyle style;
@@ -44,6 +44,13 @@ public class GuiButton : MonoBehaviour {
             {
                 this.gameObject.SetActive(false);
                 //OT.RemoveObject(OTComponent);
+            }
+        };
+        OTComponent.onReceiveDrop += (owner) =>
+        {
+            if (AddCommand(OTComponent.dropTarget.gameObject.GetComponent<GuiButton>()) == false)
+            {
+                OTComponent.dropTarget.gameObject.SetActive(false);
             }
         };
 	}

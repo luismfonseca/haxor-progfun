@@ -148,7 +148,7 @@ public class ControlPanel : MonoBehaviour {
     void OnGUI()
     {
         GUI.skin.label.fontStyle = FontStyle.Bold;
-        GUI.skin.label.normal.textColor = new Color(0,0,0);
+        GUI.skin.label.normal.textColor = new Color(0f, 0f, 0f);
         GUI.skin.label.alignment = TextAnchor.MiddleCenter;
         GUI.skin.box.normal.background = progressBarTexture;
 
@@ -164,7 +164,7 @@ public class ControlPanel : MonoBehaviour {
             updatePositions();
         }
 
-        float totalHeight = controlPanel.buttonList.Aggregate(0f, (heightSum, button) => { return heightSum + button.Height; }) + 2f;
+        float totalHeight = controlPanel.buttonList.Aggregate(0f, (heightSum, button) => { return heightSum + button.Height; }) + 4f;
 
         GUILayout.Space(totalHeight * (Screen.height / ViewportRect.height));
         GUILayout.EndScrollView();

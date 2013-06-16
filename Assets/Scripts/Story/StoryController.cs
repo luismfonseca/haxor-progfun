@@ -20,9 +20,10 @@ public class StoryController : MonoBehaviour
     {
         fadingToNextLevel = true;
         yield return new WaitForSeconds(1f);
+        fadingToNextLevel = false;
+        displayStory = true;
         game.CurrentLevelNumber++;
         Game.Save(game);
-        displayStory = true;
         Application.LoadLevel("Story");
     }
 
@@ -50,6 +51,7 @@ public class StoryController : MonoBehaviour
     void OnGUI()
     {
         GUI.skin = Skin;
+        GUI.skin.label.normal.textColor = Color.black;
         if (fadingToNextLevel)
         {
             GUI.skin.label.normal.textColor = new Color(0, 0, 0, Mathf.Lerp(0, 1, Time.deltaTime));
@@ -63,10 +65,6 @@ public class StoryController : MonoBehaviour
             else if (Time.timeSinceLevelLoad > SceneTimeForLevel - 1)
             {
                 GUI.skin.label.normal.textColor = new Color(0, 0, 0, SceneTimeForLevel - Time.timeSinceLevelLoad);
-            }
-            else
-            {
-                GUI.skin.label.normal.textColor = new Color(0, 0, 0, 1);
             }
         }
         if (fadingToNextLevel || displayStory)
