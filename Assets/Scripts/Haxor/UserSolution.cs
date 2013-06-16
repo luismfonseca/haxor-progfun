@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 
 namespace Haxor
 {
-    [Serializable]
+    //[Serializable]
     public class PlayerSolution : List<Command>
     {
 

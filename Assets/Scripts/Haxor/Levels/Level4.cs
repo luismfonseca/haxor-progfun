@@ -20,7 +20,7 @@ namespace Haxor
 
         public Level4()
         {
-            MaximumLines = 100;
+            MaximumLines = 30;
 
             Patterns = new Pattern[] { new Pattern(), new Pattern(), new Pattern(), new Pattern(), new Pattern(), new Pattern(), new Pattern() };
 

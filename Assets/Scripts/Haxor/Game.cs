@@ -13,6 +13,7 @@ namespace Haxor
     public class Game
     {
         [XmlIgnore]
+        [NonSerialized]
         private const string GAME_FILENAME = "userSavedGame.dat";
 
         public int PlayerScore = 0;
@@ -61,7 +62,15 @@ namespace Haxor
         {
             try
             {
-                return BinarySerialization.Deserialize<Game>(GAME_FILENAME);
+                var game = BinarySerialization.Deserialize<Game>(GAME_FILENAME);
+
+                // Make sure PlayerSolution is empty
+                foreach (var level in game.Levels)
+                {
+                    level.PlayerSolution = new PlayerSolution();
+                }
+
+                return game;
             }
             catch
             {

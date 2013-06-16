@@ -24,7 +24,7 @@ public class LineSegmentNext : MonoBehaviour {
             float progress = Game.EvaluateProgress(level.Lines, gameController.linesPanel.PlayerRunResultLines);
             if (progress >= 1)
             {
-                GameController.Find().Game.PlayerScore += 1000;
+                GameController.Find().Game.PlayerScore += 200;
                 StoryController.Find().Advance();
             }
         }
