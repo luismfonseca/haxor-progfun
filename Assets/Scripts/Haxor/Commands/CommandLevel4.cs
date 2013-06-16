@@ -8,12 +8,12 @@ using UnityEngine;
 namespace Assets.Scripts.Haxor.Commands
 {
     [Serializable]
-    public class CommandLevel10 : Command
+    public class CommandLevel4 : Command
     {
         public static Command[] Commands = new Command[]
         {
-            new CommandLevel10() { Name = "Move" },
-            new CommandLevel10() { Name = "Jump" },
+            new CommandLevel4() { Name = "Move" },
+            new CommandLevel4() { Name = "Jump" },
             new Repeat()
         };
 
@@ -27,7 +27,7 @@ namespace Assets.Scripts.Haxor.Commands
 
         public override object Clone()
         {
-            return new CommandLevel10() { Name = Name };
+            return new CommandLevel3() { Name = Name };
         }
     }
 

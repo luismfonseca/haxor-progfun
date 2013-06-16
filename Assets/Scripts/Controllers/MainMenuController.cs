@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Haxor;
 
 public class MainMenuController : MonoBehaviour
 {
@@ -21,12 +22,13 @@ public class MainMenuController : MonoBehaviour
 
         if (GUI.Button(new Rect(CONTENT_START_X, CONTENT_START_Y, FORM_CELL_WIDTH, FORM_CELL_HEIGHT), "START GAME"))
         {
-            Application.LoadLevel("SceneStoryLevel1");
+            Game.DeleteSavedGame();
+            Application.LoadLevel("Story");
         }
 
         if (GUI.Button(new Rect(CONTENT_START_X, CONTENT_START_Y + FORM_CELL_HEIGHT + 5, FORM_CELL_WIDTH, FORM_CELL_HEIGHT), "LOAD GAME"))
         {
-            // TODO
+            Application.LoadLevel("Story");
         }
 
         if (GUI.Button(new Rect(CONTENT_START_X, CONTENT_START_Y + 2 * (FORM_CELL_HEIGHT + 5), FORM_CELL_WIDTH, FORM_CELL_HEIGHT), "HIGHSCORES"))

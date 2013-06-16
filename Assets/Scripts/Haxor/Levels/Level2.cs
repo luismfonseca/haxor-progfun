@@ -19,11 +19,12 @@ namespace Haxor
         }
         public Level2()
         {
-            nextLevelScene = "mainScene";
             MaximumLines = 6;
 
-            Patterns = new Pattern[11] { new Pattern(), new Pattern(), new Pattern(), new Pattern(), new Pattern(),
-                new Pattern(), new Pattern(),new Pattern(), new Pattern(), new Pattern(), new Pattern() };
+            Patterns = new Pattern[] {
+                    new Pattern(), new Pattern(), new Pattern(), new Pattern(), new Pattern(),
+                    new Pattern(), new Pattern(), new Pattern(), new Pattern(), new Pattern(), new Pattern() };
+
             // Some are repeated to increase their odds
             Patterns[0].Add(new Line() { LineColor = LineColor.Black });
             Patterns[1].Add(new Line() { LineColor = LineColor.Black });

@@ -24,7 +24,7 @@ public class ControlPanel : MonoBehaviour {
     private Rect ViewportRect;
     private Vector2 screenSize;
 
-   private static float fadeInFromLevelTime;
+    private static float fadeInFromLevelTime;
     private static float toNextLevel;
     private static readonly float fadeTime = 1.5f;
     private static Texture2D fadeOutTexture;
@@ -46,7 +46,7 @@ public class ControlPanel : MonoBehaviour {
 		OTComponent = this.GetComponent<OTSprite>();
 		OTComponent.registerInput = true;
 		OTComponent.onReceiveDrop += (owner) => {
-            Game.PlayerScore -= 10;
+            gameController.Game.PlayerScore -= 10;
             Debug.Log("Panel: I received a drop from : " + owner.gameObject.name);
             AddCommand(OTComponent.dropTarget.gameObject.GetComponent<GuiButton>());
 		};
@@ -57,13 +57,12 @@ public class ControlPanel : MonoBehaviour {
         progressBarTexture.wrapMode = TextureWrapMode.Repeat;
         progressBarTexture.Apply();
 
-        toNextLevel = -1;
-        fadeInFromLevelTime = 0;
-        fadeOutTexture = new Texture2D(1, 1);
-        fadeOutTexture.SetPixel(0, 0, new Color(1, 1, 1));
-        fadeOutTexture.wrapMode = TextureWrapMode.Repeat;
-        fadeOutTexture.Apply();
-
+        //toNextLevel = -1;
+        //fadeInFromLevelTime = 0;
+        //fadeOutTexture = new Texture2D(1, 1);
+        //fadeOutTexture.SetPixel(0, 0, new Color(1, 1, 1));
+        //fadeOutTexture.wrapMode = TextureWrapMode.Repeat;
+        //fadeOutTexture.Apply();
 	}
 	
 	void Update()
@@ -174,47 +173,37 @@ public class ControlPanel : MonoBehaviour {
 
         drawProgressBar();
 
- 	fadeInFromLevelTime += Time.deltaTime;
-        if (fadeInFromLevelTime < fadeTime)
-        {
-            GUI.color = new Color(1, 1, 1, fadeTime - fadeInFromLevelTime);
-            GUI.depth = -100;
-            GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), fadeOutTexture);
-        }
-        else if (toNextLevel > -1)
-        {
-            toNextLevel += Time.deltaTime;
-            if (toNextLevel >= 1)
-            {
-                toNextLevel = 1;
-                Application.LoadLevel(gameController.Game.CurrentLevel.nextLevelScene);
-            }
-
-            GUI.color = new Color(1, 1, 1, toNextLevel);
-            GUI.depth = -100;
-            GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), fadeOutTexture);
-
-
-        }
-
-    }
-
-    public static void fadeToNextLevel()
-    {
-        toNextLevel = 0;
-
+ 	    //fadeInFromLevelTime += Time.deltaTime;
+        //if (fadeInFromLevelTime < fadeTime)
+        //{
+        //    GUI.color = new Color(1, 1, 1, fadeTime - fadeInFromLevelTime);
+        //    GUI.depth = -100;
+        //    GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), fadeOutTexture);
+        //}
+        //else if (toNextLevel > -1)
+        //{
+        //    toNextLevel += Time.deltaTime;
+        //    if (toNextLevel >= 1)
+        //    {
+        //        toNextLevel = 1;
+        //        Application.LoadLevel(gameController.Game.CurrentLevel.nextLevelScene);
+        //    }
+        //
+        //    GUI.color = new Color(1, 1, 1, toNextLevel);
+        //    GUI.depth = -100;
+        //    GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), fadeOutTexture);
+        //}
     }
 
     /// <summary>
-    /// draw the progressbar of the level
+    /// Draw the progressbar of the level
     /// </summary>
     private void drawProgressBar()
     {
         int width = Screen.width, height = Screen.height;
 
-        int currentLevel = gameController.Game.CurrentLevelNumber;
-        string currentLevelString = "Level" + currentLevel;
-        string nextLevelString = "Level" + ( currentLevel + 1 );
+        string currentLevelString = "Level " + (gameController.Game.CurrentLevelNumber + 1);
+        string nextLevelString = "Level " + ( gameController.Game.CurrentLevelNumber + 2 );
 
         float progress = Game.EvaluateProgress(gameController.Game.CurrentLevel.Lines, linesPanel.PlayerRunResultLines);
 

@@ -5,6 +5,7 @@ using System;
 using Haxor.Util;
 using System.Xml.Serialization;
 using Assets.Scripts.Haxor.Util;
+using System.IO;
 
 namespace Haxor
 {
@@ -14,11 +15,17 @@ namespace Haxor
         [XmlIgnore]
         private const string GAME_FILENAME = "userSavedGame.dat";
 
+        public int PlayerScore = 0;
+        
         public List<Level> Levels;
-        public Level CurrentLevel;
-
         public int CurrentLevelNumber;
-        public static int PlayerScore = 0;
+        public Level CurrentLevel
+        {
+            get
+            {
+                return Levels[CurrentLevelNumber];
+            }
+        }
 
         public static float EvaluateProgress(List<Line> original, List<Line> toBeValidated)
         {
@@ -38,21 +45,11 @@ namespace Haxor
         {
             Game newGame = new Game();
 
-            //newGame.Levels = new List<Level>();
-            //newGame.Levels.Add(new Level1());
-            //newGame.Levels.Add(new Level2());
+            newGame.Levels = new List<Level>() {
+                    new Level0(), new Level1(), new Level2(), new Level3(), new Level4() };
 
-            //newGame.CurrentLevel = newGame.Levels[Math.Min(CurrentLevelNumber, newGame.Levels.Count) - 1];
+            newGame.CurrentLevelNumber = 0;
             return newGame;
-        }
-
-        public void init() {
-            switch (CurrentLevelNumber)
-            {
-                case 1: CurrentLevel = new Level1(); break;
-                case 2: CurrentLevel = new Level2(); break;
-                case 10: CurrentLevel = new Level10(); break;
-            }
         }
 
         public static void Save(Game Game)
@@ -62,7 +59,25 @@ namespace Haxor
 
         public static Game Load()
         {
-            return BinarySerialization.Deserialize<Game>(GAME_FILENAME);
+            try
+            {
+                return BinarySerialization.Deserialize<Game>(GAME_FILENAME);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static void DeleteSavedGame()
+        {
+            try
+            {
+                File.Delete(GAME_FILENAME);
+            }
+            catch
+            {
+            }
         }
     }
 }

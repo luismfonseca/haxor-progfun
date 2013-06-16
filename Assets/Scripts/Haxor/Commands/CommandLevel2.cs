@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using UnityEngine;
 
 namespace Assets.Scripts.Haxor.Commands
 {
@@ -14,7 +13,9 @@ namespace Assets.Scripts.Haxor.Commands
         {
             new CommandLevel2() { Name = "Go" },
             new CommandLevel2() { Name = "Skip" },
-            new ChangeColor()
+            new CommandLevel2() { Name = "Black" },
+            new CommandLevel2() { Name = "Blue" },
+            new CommandLevel2() { Name = "Red" }
         };
 
         public override Action<IHandleCommand> GetAction()
@@ -31,45 +32,24 @@ namespace Assets.Scripts.Haxor.Commands
                     {
                         handler.AddLine(new Line());
                     };
+                case "Black":
+                    return (handler) =>
+                    {
+                        handler.ChangeCurrentColor(LineColor.Black);
+                    };
+                case "Blue":
+                    return (handler) =>
+                    {
+                        handler.ChangeCurrentColor(LineColor.Blue);
+                    };
+                case "Red":
+                    return (handler) =>
+                    {
+                        handler.ChangeCurrentColor(LineColor.Red);
+                    };
                 default:
                     throw new Exception("Command Action undefined.");
             }
-        }
-
-        public override object Clone()
-        {
-            return new CommandLevel2() { Name = Name };
-        }
-    }
-
-    public class ChangeColor : CommandLevel2
-    {
-        public static LineColor[] Colors = new LineColor[]
-        {
-            LineColor.Black,
-            LineColor.Red,
-            LineColor.Blue
-        };
-
-        public int SelectionIndex;
-
-        public ChangeColor()
-        {
-            Name = "Change Color";
-            SelectionIndex = 0;
-        }
-
-        public override Action<IHandleCommand> GetAction()
-        {
-            return (handler) =>
-            {
-                handler.ChangeCurrentColor(Colors[SelectionIndex]);
-            };
-        }
-
-        public override object Clone()
-        {
-            return new ChangeColor() { Name = Name };
         }
     }
 }

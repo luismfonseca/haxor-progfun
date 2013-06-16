@@ -24,8 +24,6 @@ namespace Haxor
 
         public int MaximumLines { get; set; }
 
-        public string nextLevelScene { get; set; }
-
         public float Progress
         {
             get

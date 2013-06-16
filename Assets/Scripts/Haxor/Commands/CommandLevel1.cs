@@ -9,13 +9,10 @@ namespace Assets.Scripts.Haxor.Commands
     [Serializable]
     public class CommandLevel1 : Command
     {
-        public static Command[] Commands = new Command[]
+        public static Command[] Commands =
         {
             new CommandLevel1() { Name = "Go" },
-            new CommandLevel1() { Name = "Skip" },
-            new CommandLevel1() { Name = "Black" },
-            new CommandLevel1() { Name = "Blue" },
-            new CommandLevel1() { Name = "Red" }
+            new CommandLevel1() { Name = "Skip" }
         };
 
         public override Action<IHandleCommand> GetAction()
@@ -32,29 +29,9 @@ namespace Assets.Scripts.Haxor.Commands
                     {
                         handler.AddLine(new Line());
                     };
-                case "Black":
-                    return (handler) =>
-                    {
-                        handler.ChangeCurrentColor(LineColor.Black);
-                    };
-                case "Blue":
-                    return (handler) =>
-                    {
-                        handler.ChangeCurrentColor(LineColor.Blue);
-                    };
-                case "Red":
-                    return (handler) =>
-                    {
-                        handler.ChangeCurrentColor(LineColor.Red);
-                    };
                 default:
                     throw new Exception("Command Action undefined.");
             }
-        }
-
-        public override object Clone()
-        {
-            return new CommandLevel1() { Name = Name };
         }
     }
 }

@@ -7,7 +7,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{5F86F18A-3A09-FDB4-9B31-CF8602E97D08}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <AssemblyName>UnityVS.haxor-progfun.CSharp</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <NoConfig>true</NoConfig>
@@ -147,15 +148,19 @@
     <Compile Include="Assets\Scripts\Haxor\ArrayList.cs" />
     <Compile Include="Assets\Scripts\Haxor\Commands\Command.cs" />
     <Compile Include="Assets\Scripts\Haxor\Commands\CommandLevel1.cs" />
-    <Compile Include="Assets\Scripts\Haxor\Commands\CommandLevel10.cs" />
+    <Compile Include="Assets\Scripts\Haxor\Commands\CommandLevel3.cs" />
     <Compile Include="Assets\Scripts\Haxor\Commands\CommandLevel2.cs" />
+    <Compile Include="Assets\Scripts\Haxor\Commands\CommandLevel0.cs" />
+    <Compile Include="Assets\Scripts\Haxor\Commands\CommandLevel4.cs" />
     <Compile Include="Assets\Scripts\Haxor\Game.cs" />
     <Compile Include="Assets\Scripts\Haxor\HighScore.cs" />
     <Compile Include="Assets\Scripts\Haxor\IHandleCommand.cs" />
     <Compile Include="Assets\Scripts\Haxor\Levels\Level.cs" />
+    <Compile Include="Assets\Scripts\Haxor\Levels\Level0.cs" />
     <Compile Include="Assets\Scripts\Haxor\Levels\Level1.cs" />
-    <Compile Include="Assets\Scripts\Haxor\Levels\Level10.cs" />
     <Compile Include="Assets\Scripts\Haxor\Levels\Level2.cs" />
+    <Compile Include="Assets\Scripts\Haxor\Levels\Level4.cs" />
+    <Compile Include="Assets\Scripts\Haxor\Levels\Level3.cs" />
     <Compile Include="Assets\Scripts\Haxor\Line.cs" />
     <Compile Include="Assets\Scripts\Haxor\Pattern.cs" />
     <Compile Include="Assets\Scripts\Haxor\Prototype.cs" />
@@ -167,8 +172,8 @@
     <Compile Include="Assets\Scripts\LineSegmentNext.cs" />
     <Compile Include="Assets\Scripts\LinesPanel.cs" />
     <Compile Include="Assets\Scripts\ScoreScene.cs" />
-    <Compile Include="Assets\Scripts\Story\StoryLevel1.cs" />
-    <Compile Include="Assets\Scripts\Story\StoryLevel2.cs" />
+    <Compile Include="Assets\Scripts\Story\StoryController.cs" />
+    <Compile Include="Assets\Scripts\Story\StoryLine.cs" />
     <Compile Include="Assets\Scripts\VectorLine.cs" />
     <None Include="Assets\Fonts\Ubuntu\LICENCE.txt" />
     <None Include="Assets\Orthello\-Read-Me.txt" />

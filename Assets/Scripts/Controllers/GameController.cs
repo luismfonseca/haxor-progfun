@@ -5,56 +5,40 @@ using Assets.Scripts.Controllers;
 
 public class GameController : MonoBehaviour
 {
-    public Game Game;
+    public GUISkin Skin;
+    internal Game Game;
 
-    public GameObject CommandComponent;
-
-    public LinesPanel linesPanel;
-    public ControlPanel controlPanel;
+    internal LinesPanel linesPanel;
+    internal ControlPanel controlPanel;
 
     private ButtonsController buttonsController;
     private PlayerController playerController;
+    private StoryController storyController;
 
     void Awake()
     {
-        Game.init();
-        //Game = Game.NewGame();
-        //Game = Game.Load();
+        storyController = StoryController.Find();
+        playerController = PlayerController.Find();
+        buttonsController = new ButtonsController(this);
         linesPanel = GameObject.FindObjectOfType(typeof(LinesPanel)) as LinesPanel;
         controlPanel = GameObject.FindObjectOfType(typeof(ControlPanel)) as ControlPanel;
-        buttonsController = new ButtonsController(this);
-        
+        Game = storyController.game;
+
+        GameObject.FindGameObjectWithTag(Tag.Player).SetActive(Game.CurrentLevel.DisplayCharacter);
     }
 
     void Start()
     {
         buttonsController.InstantiateCommandButtons();
-        OnLevelWasLoaded(0);
-    }
-	
-    void OnLevelWasLoaded(int level)
-    {
-        if (Game.CurrentLevelNumber > 9)
-        {
-            playerController = PlayerController.Find();
-            var playerGameObject = GameObject.FindGameObjectWithTag(Tag.Player);
-            playerGameObject.SetActive(Game.CurrentLevel.DisplayCharacter);
-        }
     }
 
     void OnGUI()
     {
-        if (GUILayout.Button("Save Game"))
-        {
-            Game.Save(Game);
-        }
-        if (GUILayout.Button("Load Game"))
-        {
-            Game = Game.Load();
-        }
+        GUI.skin = Skin;
         if (GUILayout.Button("Play"))
         {
-            if (Game.CurrentLevelNumber > 9)
+            Game.Save(Game);
+            if (Game.CurrentLevel.DisplayCharacter)
             {
                 playerController.Stop();
                 linesPanel.Play(Game.CurrentLevel.PlayerSolution);
@@ -65,7 +49,7 @@ public class GameController : MonoBehaviour
                 linesPanel.Play(Game.CurrentLevel.PlayerSolution);
             }
         }
-        GUILayout.Label("score: " + Game.PlayerScore);
+        GUILayout.Label("Score: " + Game.PlayerScore);
     }
 
     public static GameController Find()

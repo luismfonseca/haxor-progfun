@@ -60,7 +60,7 @@ public class CreditsController : MonoBehaviour
                 GUILayout.FlexibleSpace();
             GUILayout.EndHorizontal();
 
-            GUILayout.Space(CONTENT_START_Y);
+            GUILayout.Space(TITLE_START_Y);
             GUILayout.BeginHorizontal();
                 GUILayout.FlexibleSpace();
                 if (GUILayout.Button("OK"))

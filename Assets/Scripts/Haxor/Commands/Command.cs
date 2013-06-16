@@ -14,6 +14,11 @@ namespace Haxor
 
         public abstract Action<IHandleCommand> GetAction();
 
-        public abstract object Clone();
+        public virtual object Clone()
+        {
+            Command command = Activator.CreateInstance(this.GetType()) as Command;
+            command.Name = Name;
+            return command;
+        }
     }
 }
