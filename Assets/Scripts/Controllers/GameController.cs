@@ -35,21 +35,23 @@ public class GameController : MonoBehaviour
     void OnGUI()
     {
         GUI.skin = Skin;
-        if (GUILayout.Button("Play"))
-        {
-            Game.Save(Game);
-            if (Game.CurrentLevel.DisplayCharacter)
+        GUILayout.BeginVertical();
+            if (GUILayout.Button("Play"))
             {
-                playerController.Stop();
-                linesPanel.Play(Game.CurrentLevel.PlayerSolution);
-                playerController.Play();
+                Game.Save(Game);
+                if (Game.CurrentLevel.DisplayCharacter)
+                {
+                    playerController.Stop();
+                    linesPanel.Play(Game.CurrentLevel.PlayerSolution);
+                    playerController.Play();
+                }
+                else
+                {
+                    linesPanel.Play(Game.CurrentLevel.PlayerSolution);
+                }
             }
-            else
-            {
-                linesPanel.Play(Game.CurrentLevel.PlayerSolution);
-            }
-        }
-        GUILayout.Label("Score: " + Game.PlayerScore);
+            GUILayout.Label("Score: " + Game.PlayerScore);
+        GUILayout.EndVertical();
     }
 
     public static GameController Find()

@@ -8,6 +8,7 @@ public class StoryLine : MonoBehaviour
         "Okay, but that was just one line.\nCan you handle the complexity of many more?",
         "Good. It probably wasn't that hard. Lets add some colors now...",
         "Well, it's time to simplify a bit. You now only have 3 commands for this level.",
-        "Great! You are now a stickman! Lets go!"
+        "Great! You are now a stickman! Lets go!",
+        "THE END"
     };
 }

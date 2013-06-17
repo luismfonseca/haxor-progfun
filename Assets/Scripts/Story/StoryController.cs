@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using Haxor;
+using System.Collections.Generic;
 
 public class StoryController : MonoBehaviour
 {
@@ -10,9 +11,11 @@ public class StoryController : MonoBehaviour
     internal Game game;
     private bool fadingToNextLevel = false;
     private bool displayStory = true;
+    private Texture2D fadeOutTexture;
 
     public void Advance()
     {
+        game.PlayerScore += 200 * (game.CurrentLevelNumber + 1);
         StartCoroutine(FadeToNextLevel());
     }
 
@@ -20,9 +23,10 @@ public class StoryController : MonoBehaviour
     {
         fadingToNextLevel = true;
         yield return new WaitForSeconds(1f);
+        fadingToNextLevel = false;
+        displayStory = true;
         game.CurrentLevelNumber++;
         Game.Save(game);
-        displayStory = true;
         Application.LoadLevel("Story");
     }
 
@@ -36,23 +40,43 @@ public class StoryController : MonoBehaviour
         {
             game = Game.NewGame();
         }
+        fadeOutTexture = new Texture2D(1, 1);
+        fadeOutTexture.SetPixel(0, 0, new Color(1, 1, 1));
+        fadeOutTexture.wrapMode = TextureWrapMode.Repeat;
+        fadeOutTexture.Apply();
     }
 
     void Update()
     {
         if (displayStory && Time.timeSinceLevelLoad >= SceneTimeForLevel)
         {
-            Application.LoadLevel("Level");
-            displayStory = false;
+            if (game.CurrentLevelNumber == StoryLine.Plot.Length - 1)
+            {
+                DestroyObject(this);
+                Highscore.Load().Add(new KeyValuePair<string, int>(game.PlayerName, game.PlayerScore * 100));
+                Game.DeleteSavedGame();
+                Application.LoadLevel("MainMenu");
+            }
+            else
+            {
+                Application.LoadLevel("Level");
+                displayStory = false;
+            }
         }
     }
 
     void OnGUI()
     {
         GUI.skin = Skin;
+        GUI.skin.label.normal.textColor = Color.black;
         if (fadingToNextLevel)
         {
             GUI.skin.label.normal.textColor = new Color(0, 0, 0, Mathf.Lerp(0, 1, Time.deltaTime));
+
+
+            GUI.color = new Color(1, 1, 1, Mathf.Lerp(0, 1, Time.deltaTime));
+            GUI.depth = -100;
+            GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), fadeOutTexture);
         }
         else if (displayStory)
         {
@@ -63,10 +87,6 @@ public class StoryController : MonoBehaviour
             else if (Time.timeSinceLevelLoad > SceneTimeForLevel - 1)
             {
                 GUI.skin.label.normal.textColor = new Color(0, 0, 0, SceneTimeForLevel - Time.timeSinceLevelLoad);
-            }
-            else
-            {
-                GUI.skin.label.normal.textColor = new Color(0, 0, 0, 1);
             }
         }
         if (fadingToNextLevel || displayStory)

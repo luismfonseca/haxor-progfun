@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System;
 using Haxor.Util;
 using System.Xml.Serialization;
-using Assets.Scripts.Haxor.Util;
+using Haxor.Util;
 using System.IO;
 
 namespace Haxor
@@ -13,9 +13,11 @@ namespace Haxor
     public class Game
     {
         [XmlIgnore]
+        [NonSerialized]
         private const string GAME_FILENAME = "userSavedGame.dat";
 
         public int PlayerScore = 0;
+        public string PlayerName { get; set; }
         
         public List<Level> Levels;
         public int CurrentLevelNumber;
@@ -61,7 +63,15 @@ namespace Haxor
         {
             try
             {
-                return BinarySerialization.Deserialize<Game>(GAME_FILENAME);
+                var game = BinarySerialization.Deserialize<Game>(GAME_FILENAME);
+
+                // Make sure PlayerSolution is empty
+                foreach (var level in game.Levels)
+                {
+                    level.PlayerSolution = new PlayerSolution();
+                }
+
+                return game;
             }
             catch
             {

@@ -3,8 +3,8 @@ using System.Collections;
 using Haxor;
 using System;
 
-public class GuiButton : MonoBehaviour {
-
+public class GuiButton : MonoBehaviour
+{
     public static readonly float WIDTH = 2f;
 
 	public GUIStyle style;
@@ -46,12 +46,24 @@ public class GuiButton : MonoBehaviour {
                 //OT.RemoveObject(OTComponent);
             }
         };
+        OTComponent.onReceiveDrop += (owner) =>
+        {
+            if (AddCommand(OTComponent.dropTarget.gameObject.GetComponent<GuiButton>()) == false)
+            {
+                OTComponent.dropTarget.gameObject.SetActive(false);
+            }
+        };
 	}
-	
+
+    void Update()
+    {
+        OTComponent.draggable = !isPlacedInCommandsPanel
+                                || transform.position.y < 6f && transform.position.y > -6f;
+    }
+
 	void OnGUI()
     {
-        float ypos = this.gameObject.transform.position.y;
-        if (ypos > 6 || ypos < 6)
+        if (OTComponent.draggable)
         {
             Vector3 screenPos = OT.inputCameras[0].WorldToScreenPoint(this.gameObject.transform.position);
             GUI.Label(

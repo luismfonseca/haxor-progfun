@@ -31,9 +31,9 @@ public class MainMenuController : MonoBehaviour
             Application.LoadLevel("Story");
         }
 
-        if (GUI.Button(new Rect(CONTENT_START_X, CONTENT_START_Y + 2 * (FORM_CELL_HEIGHT + 5), FORM_CELL_WIDTH, FORM_CELL_HEIGHT), "HIGHSCORES"))
+        if (GUI.Button(new Rect(CONTENT_START_X, CONTENT_START_Y + 2 * (FORM_CELL_HEIGHT + 5), FORM_CELL_WIDTH, FORM_CELL_HEIGHT), "HIGHSCORE"))
         {
-            Application.LoadLevel("Score");
+            Application.LoadLevel("Highscore");
         }
 
         if (GUI.Button(new Rect(CONTENT_START_X, CONTENT_START_Y + 3 * (FORM_CELL_HEIGHT + 5), FORM_CELL_WIDTH, FORM_CELL_HEIGHT), "CREDITS"))

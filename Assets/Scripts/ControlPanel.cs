@@ -46,8 +46,6 @@ public class ControlPanel : MonoBehaviour {
 		OTComponent = this.GetComponent<OTSprite>();
 		OTComponent.registerInput = true;
 		OTComponent.onReceiveDrop += (owner) => {
-            gameController.Game.PlayerScore -= 10;
-            Debug.Log("Panel: I received a drop from : " + owner.gameObject.name);
             AddCommand(OTComponent.dropTarget.gameObject.GetComponent<GuiButton>());
 		};
 		displayOffset = 0;
@@ -89,6 +87,7 @@ public class ControlPanel : MonoBehaviour {
         if (index == -1)
         {
             index = buttonList.Count;
+            scrollPosition = new Vector2(0, int.MaxValue);
         }
 
         // Pass the event to the previous container to see if he can handle it
@@ -149,7 +148,7 @@ public class ControlPanel : MonoBehaviour {
     void OnGUI()
     {
         GUI.skin.label.fontStyle = FontStyle.Bold;
-        GUI.skin.label.normal.textColor = new Color(0,0,0);
+        GUI.skin.label.normal.textColor = new Color(0f, 0f, 0f);
         GUI.skin.label.alignment = TextAnchor.MiddleCenter;
         GUI.skin.box.normal.background = progressBarTexture;
 
@@ -163,9 +162,10 @@ public class ControlPanel : MonoBehaviour {
         if (scrollPosition != lastScrollPosition)
         {
             updatePositions();
+            Debug.Log(scrollPosition.y);
         }
 
-        float totalHeight = controlPanel.buttonList.Aggregate(0f, (heightSum, button) => { return heightSum + button.Height; }) + 2f;
+        float totalHeight = controlPanel.buttonList.Aggregate(0f, (heightSum, button) => { return heightSum + button.Height; }) + 4f;
 
         GUILayout.Space(totalHeight * (Screen.height / ViewportRect.height));
         GUILayout.EndScrollView();

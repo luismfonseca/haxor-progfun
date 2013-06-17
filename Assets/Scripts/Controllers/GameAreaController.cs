@@ -16,7 +16,7 @@ public class GameAreaController : MonoBehaviour
     void Update()
     {
         float xAxisValue = Input.GetAxis("Horizontal");
-        float zAxisValue = Input.GetAxis("Vertical") / 7f;
+        float zAxisValue = Input.GetAxis("Vertical") / -7f;
         gameAreaCamera.camera.orthographicSize = Mathf.Max(5f, Mathf.Min(10f, gameAreaCamera.camera.orthographicSize + zAxisValue));
         if (xAxisValue < 0.0f)
         {

@@ -73,6 +73,29 @@ namespace Haxor
             info.AddValue("Color.b", Color.b);
             info.AddValue("Color.a", Color.a);
         }
+
+        public static bool operator ==(LineColor a, LineColor b)
+        {
+            // If both are null, or both are same instance, return true.
+            if (System.Object.ReferenceEquals(a, b))
+            {
+                return true;
+            }
+
+            // If one is null, but not both, return false.
+            if (((object)a == null) || ((object)b == null))
+            {
+                return false;
+            }
+
+            // Return true if the fields match:
+            return a.Color == b.Color;
+        }
+
+        public static bool operator !=(LineColor a, LineColor b)
+        {
+            return !(a == b);
+        }
     }
 
     [Serializable]
