@@ -53,7 +53,7 @@ public class StoryController : MonoBehaviour
             if (game.CurrentLevelNumber == StoryLine.Plot.Length - 1)
             {
                 DestroyObject(this);
-                Highscore.Load().Add(new KeyValuePair<string, int>(game.PlayerName, game.PlayerScore * 100));
+                Highscore.Load().Add(new KeyValuePair<string, int>(game.PlayerName, game.PlayerScore));
                 Game.DeleteSavedGame();
                 Application.LoadLevel("MainMenu");
             }
