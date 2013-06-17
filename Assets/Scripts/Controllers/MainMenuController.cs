@@ -92,6 +92,11 @@ public class MainMenuController : MonoBehaviour
             Application.LoadLevel("Credits");
         }
 
+        if (GUI.Button(new Rect(CONTENT_START_X, CONTENT_START_Y + 4 * (FORM_CELL_HEIGHT + 5), FORM_CELL_WIDTH, FORM_CELL_HEIGHT), "EXIT"))
+        {
+            Application.Quit();
+        }
+
         GUILayout.EndVertical();
     }
 }
