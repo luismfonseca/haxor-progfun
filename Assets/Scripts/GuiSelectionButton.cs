@@ -4,9 +4,14 @@ using System.Linq;
 using Haxor;
 using Assets.Scripts.Haxor.Commands;
 
+/// <summary>
+/// Selection button, it is used to select from a list of button
+/// it is used by the Change Color Button
+/// </summary>
 public class GuiSelectionButton : MonoBehaviour {
 
-    public static readonly float HEIGHT = 0.25f;
+    public static readonly float HEIGHTRATIO = GuiButton.WIDTH/1.5f;
+    public static readonly float HEIGHT = 0.25f * HEIGHTRATIO;
     public static readonly float WIDTH = 0.25f;
 
 	public GUIStyle style;

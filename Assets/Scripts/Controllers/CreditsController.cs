@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Credits controller, it starts when the scene changes to the Credits
+/// from the Main Menu, it loads the interface
+/// </summary>
 public class CreditsController : MonoBehaviour
 {
     private static readonly int TITLE_START_Y = 163;
@@ -55,7 +59,7 @@ public class CreditsController : MonoBehaviour
             GUILayout.BeginHorizontal();
                 GUILayout.FlexibleSpace();
                 GUILayout.Label("Luís Fonseca is 22 years old and is currently a student at Faculdade de Engenharia da Universidade do Porto. \nHe likes music, programming, and games in general.", Skin.customStyles[SkinStyle.Credits]);
-                GUILayout.Label("Omar Castro is 22 years old and is currently a student at Faculdade de Engenharia da Universidade do Porto. \nHe likes stuff.", Skin.customStyles[SkinStyle.Credits]);
+                GUILayout.Label("Omar Castro is 22 years old and is currently a student at Faculdade de Engenharia da Universidade do Porto. \nHe likes  music, problem solving challenges and martial arts.", Skin.customStyles[SkinStyle.Credits]);
                 GUILayout.Label("Witold Zgrabka is 24 years old and is currently an erasmus student at Faculdade de Engenharia da Universidade do Porto. \nHe likes stuff.", Skin.customStyles[SkinStyle.Credits]);
                 GUILayout.FlexibleSpace();
             GUILayout.EndHorizontal();

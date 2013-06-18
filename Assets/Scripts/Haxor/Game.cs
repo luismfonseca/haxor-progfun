@@ -9,6 +9,12 @@ using System.IO;
 
 namespace Haxor
 {
+    /// <summary>
+    /// Seriable class Game is used to save and load the game
+    /// the game as for now auto saves each level passed, creting a new
+    /// game overwrites the old save
+    /// </summary>
+
     [Serializable]
     public class Game
     {

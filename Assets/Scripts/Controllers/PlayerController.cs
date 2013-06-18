@@ -4,6 +4,10 @@ using System.Collections;
 using System.Collections.Generic;
 using Haxor;
 
+/// <summary>
+/// Controller of the stickman, it controls its movements
+/// and animations.
+/// </summary>
 public class PlayerController : MonoBehaviour
 {
     public List<Command> Commands;

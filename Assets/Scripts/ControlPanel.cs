@@ -56,11 +56,11 @@ public class ControlPanel : MonoBehaviour {
         progressBarTexture.Apply();
 
         //toNextLevel = -1;
-        //fadeInFromLevelTime = 0;
-        //fadeOutTexture = new Texture2D(1, 1);
-        //fadeOutTexture.SetPixel(0, 0, new Color(1, 1, 1));
-        //fadeOutTexture.wrapMode = TextureWrapMode.Repeat;
-        //fadeOutTexture.Apply();
+        fadeInFromLevelTime = 0;
+        fadeOutTexture = new Texture2D(1, 1);
+        fadeOutTexture.SetPixel(0, 0, new Color(0, 0, 0, 0.5f));
+        fadeOutTexture.wrapMode = TextureWrapMode.Repeat;
+        fadeOutTexture.Apply();
 	}
 	
 	void Update()
@@ -71,6 +71,9 @@ public class ControlPanel : MonoBehaviour {
         }
 	}
 
+    /// <summary>
+    /// Updates the relative viewport Rectangle, the view post rectangle contins the World coordinates of the screen edges 
+    /// </summary>
     void UpdateViewportRect()
     {
         topleft = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0));
@@ -79,6 +82,10 @@ public class ControlPanel : MonoBehaviour {
         screenSize = new Vector2(Screen.width, Screen.height);
     }
 
+    /// <summary>
+    /// Adds a new command to the Control Panel
+    /// </summary>
+    /// <param name="obj">the Button that contains the command</param>
     public void AddCommand(GuiButton obj)
 	{
         float objPositionY = obj.gameObject.transform.position.y;
@@ -106,6 +113,10 @@ public class ControlPanel : MonoBehaviour {
         updatePositions();
 	}
 
+    /// <summary>
+    /// Removes a command from the Control Panel
+    /// </summary>
+    /// <param name="obj">the Button that contains the command</param>
     public void RemoveCommand(GuiButton obj)
     {
         if (obj.transform.parent != null)
@@ -133,32 +144,43 @@ public class ControlPanel : MonoBehaviour {
         foreach (var button in buttonList)
         {
             button.gameObject.transform.position =
-                    new Vector3(0.5f, positionOffset, -2);
+                    new Vector3(0.7f, positionOffset, -2);
             button.index = index;
             positionOffset -= (button.Height);
             ++index;
         }
     }
 
+    /// <summary>
+    /// Get number of commands int the control panel
+    /// </summary>
 	public static int GetCommandsCount()
     {
         return gameController.Game.CurrentLevel.PlayerSolution.Count;
 	}
 
+    /// <summary>
+    /// function to call GUI commands all GUI functions must be called inside this function
+    /// </summary>
     void OnGUI()
     {
         GUI.skin.label.fontStyle = FontStyle.Bold;
         GUI.skin.label.normal.textColor = new Color(0f, 0f, 0f);
         GUI.skin.label.alignment = TextAnchor.MiddleCenter;
-        GUI.skin.box.normal.background = progressBarTexture;
+        GUI.skin.box.normal.background = fadeOutTexture;
 
         GUIStyle style = new GUIStyle();
         int width = Screen.width, height = Screen.height;
-        Rect position = new Rect(width * 0.49f, height * 0.2f, height * 0.74f, height * 0.6f);
+
+        float ControlPanelWidth = height * 0.65f;
+        float ControlPanelHeight = height * 0.595f;
+        Rect position = new Rect(width * 0.49f, height * 0.205f, ControlPanelWidth, ControlPanelHeight);
+
         GUILayout.BeginArea(position);
         GUILayout.FlexibleSpace();
         Vector2 lastScrollPosition = scrollPosition;
-        scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUILayout.Width(height * 0.74f), GUILayout.Height(height * 0.6f));
+        scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUILayout.Width(ControlPanelWidth), GUILayout.Height(ControlPanelHeight));
+        
         if (scrollPosition != lastScrollPosition)
         {
             updatePositions();
@@ -196,7 +218,7 @@ public class ControlPanel : MonoBehaviour {
     }
 
     /// <summary>
-    /// Draw the progressbar of the level
+    /// Draw the progressbar of the level, it should be run inside OnGUI()
     /// </summary>
     private void drawProgressBar()
     {
@@ -215,6 +237,7 @@ public class ControlPanel : MonoBehaviour {
         float progressBarHorizontalMargin = labelHorizontalMargin + labelWidth;
 
         float GameViewportWidth = width * 0.451f;
+        GUI.skin.box.normal.background = progressBarTexture;
 
         GUI.Label(new Rect(
             labelHorizontalMargin,

@@ -19,7 +19,15 @@ public class GuiButton : MonoBehaviour
     {
         get
         {
-            return 2f;
+            return 1.5f;
+        }
+    }
+
+    public virtual float ButtonHeight
+    {
+        get
+        {
+            return 1.5f;
         }
     }
 
@@ -27,7 +35,7 @@ public class GuiButton : MonoBehaviour
     {
 		this.name = this.gameObject.name;
 		OTComponent = this.GetComponent<OTSprite>();
-        OTComponent.size = new Vector2(WIDTH, 2f);
+        OTComponent.size = new Vector2(WIDTH, ButtonHeight);
 		OTComponent.onDragStart += (owner) => {
 			this.gameObject.name = "Command-" + ControlPanel.GetCommandsCount();
 			var newObject = OT.CreateSprite(this.name);

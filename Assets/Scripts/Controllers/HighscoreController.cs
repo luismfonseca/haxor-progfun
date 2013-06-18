@@ -9,6 +9,10 @@ using System.Collections;
 using System.Runtime.Serialization.Formatters.Binary;
 using Haxor;
 
+/// <summary>
+/// Highscore controller, it starts when the scene changes to the HighScore
+/// from the Main Menu, it loads the highscores and the interface
+/// </summary>
 public class HighscoreController : MonoBehaviour
 {
     private static readonly int TITLE_START_Y = 163;

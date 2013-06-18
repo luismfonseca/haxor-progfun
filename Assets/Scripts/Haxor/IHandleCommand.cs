@@ -7,6 +7,10 @@ using UnityEngine;
 
 namespace Assets.Scripts.Haxor
 {
+    /// <summary>
+    /// Command Handlers, they're going to be used when the
+    /// player "plays" the solution
+    /// </summary>
     public interface IHandleCommand
     {
         void AddLine(Line line);

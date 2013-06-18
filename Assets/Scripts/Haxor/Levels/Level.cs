@@ -8,6 +8,14 @@ using Assets.Scripts.Haxor.Commands;
 
 namespace Haxor
 {
+
+    /// <summary>
+    /// the levels of the game, it saves a list of lines of the solution,
+    /// the number of lines of the level is no larger than the MaximumLines variable,
+    /// each level has its own named with the following template
+    /// "Level<n>.cs" where <n> is the level number
+    /// </summary>
+
     [Serializable]
     public abstract class Level
     {

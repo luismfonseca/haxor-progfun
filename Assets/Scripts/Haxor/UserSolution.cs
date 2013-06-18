@@ -6,7 +6,9 @@ using System.Runtime.Serialization;
 
 namespace Haxor
 {
-    //[Serializable]
+    /// <summary>
+    /// list of commands of the player in the Control Panel
+    /// </summary>
     public class PlayerSolution : List<Command>
     {
 

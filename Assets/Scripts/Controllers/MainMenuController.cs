@@ -2,6 +2,10 @@
 using System.Collections;
 using Haxor;
 
+/// <summary>
+/// Controller for the main Menu, this is where the buttons
+/// are initialized
+/// </summary>
 public class MainMenuController : MonoBehaviour
 {
     private static readonly int TITLE_START_Y = 163;

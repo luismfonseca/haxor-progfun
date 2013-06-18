@@ -7,12 +7,18 @@ using Haxor.Util;
 
 namespace Haxor
 {
+    /// <summary>
+    /// Class Highscore its a serializable list of KeyValuePair
+    /// so it can load and save the highscores, the list
+    /// contais the scores of the best players, it is used by the
+    /// Highscore contrller to load the game
+    /// </summary>
     [Serializable]
     public class Highscore : List<KeyValuePair<string, int>>
 	{
         [XmlIgnore]
         [NonSerialized]
-        private const string FILENAME = "highscore.dat";
+        private const string FILENAME = "highscore.dat"; /// name of the highscore file data
 
         [XmlIgnore]
         [NonSerialized]
@@ -29,6 +35,9 @@ namespace Haxor
             Save(this);
         }
 
+        /// <summary>
+        /// saves the highscore to FILENAME
+        /// </summary>
         public static void Save(Highscore highscore)
         {
             try
@@ -40,6 +49,9 @@ namespace Haxor
             }
         }
 
+        /// <summary>
+        /// loads the highscore from FILENAME
+        /// </summary>
         public static Highscore Load()
         {
             try

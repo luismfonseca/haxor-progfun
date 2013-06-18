@@ -18,7 +18,15 @@ public class GuiRepeatButton : GuiButton
     {
         get
         {
-            return 4f + 2f * (buttonList.Count);
+            return 2.5f + 1.5f * (buttonList.Count);
+        }
+    }
+
+    public override float ButtonHeight
+    {
+        get
+        {
+            return 1.5f;
         }
     }
 
@@ -60,7 +68,7 @@ public class GuiRepeatButton : GuiButton
     {
         int index = 0;
         var positionOffsetX = transform.position.x + 1f;
-        var positionOffsetY = transform.position.y - 2f;
+        var positionOffsetY = transform.position.y - 1.5f;
         foreach (var button in buttonList)
         {
             button.gameObject.transform.position =

@@ -3,6 +3,9 @@ using System.Collections;
 using Haxor;
 using System.Collections.Generic;
 
+/// <summary>
+/// Controller of the Story levels
+/// </summary>
 public class StoryController : MonoBehaviour
 {
     public float SceneTimeForLevel = 5f;
@@ -48,6 +51,17 @@ public class StoryController : MonoBehaviour
 
     void Update()
     {
+
+        //to advance to the next level quickly
+        if (Input.GetKey(KeyCode.Space)
+         || Input.GetKey(KeyCode.Escape)
+         || Input.GetKey(KeyCode.KeypadEnter)
+         || Input.GetKey(KeyCode.F2))
+        {
+            Application.LoadLevel("Level");
+            displayStory = false;
+        }
+
         if (displayStory && Time.timeSinceLevelLoad >= SceneTimeForLevel)
         {
             if (game.CurrentLevelNumber == StoryLine.Plot.Length - 1)

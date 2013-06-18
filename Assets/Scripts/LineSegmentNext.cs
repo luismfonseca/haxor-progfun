@@ -2,6 +2,9 @@ using UnityEngine;
 using System.Collections;
 using Haxor;
 
+/// <summary>
+/// class to animate the lines appearing on the screen
+/// </summary>
 public class LineSegmentNext : MonoBehaviour {
 
     public GameObject next;
