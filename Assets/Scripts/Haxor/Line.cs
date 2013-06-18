@@ -8,7 +8,7 @@ namespace Haxor
 {
     /// <summary>
     /// Line class, it represents a line in the game
-    /// it is serializable so we can save the solution of the level of the game
+    /// it is serializable so it is possible to save the solution of the level of the game
     /// </summary>
     [Serializable]
     public class Line
@@ -41,7 +41,7 @@ namespace Haxor
         }
     }
     /// <summary>
-    /// Serialization of line color
+    /// Represents the possible colors which a line can take.
     /// </summary>
     [Serializable]
     public class LineColor : ISerializable
@@ -105,7 +105,7 @@ namespace Haxor
     }
 
     /// <summary>
-    /// Serialization for the orientation of the line
+    /// Represents the possible orientations the line can take.
     /// </summary>
     [Serializable]
     public enum LineOrientation

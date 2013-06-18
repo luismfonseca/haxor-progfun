@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace Haxor
 {
     /// <summary>
-    /// a serializable list of lines for saving/loading the game
+    /// Represents an ordered set of lines that together form a pattern
     /// </summary>
     [Serializable]
     public class Pattern : List<Line>
